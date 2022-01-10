@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
+import 'package:bottom_navigation_bar_mansour/models/archived_tasks_screen.dart';
+import 'package:bottom_navigation_bar_mansour/models/done_tasks_screen.dart';
+import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeLayout extends StatefulWidget {
@@ -11,7 +13,11 @@ class HomeLayout extends StatefulWidget {
 
 class _HomeLayoutState extends State<HomeLayout> {
   int currentIndex = 0;
-  List<Widget> screen = [];
+  List<Widget> screens = [
+    NewTasksScreen(),
+    DoneTasksScreen(),
+    ArchivedTasksScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +26,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         title: Text("79. Bottom Navigation Bar"),
         centerTitle: true,
       ),
+      body: screens[currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add_a_photo),
