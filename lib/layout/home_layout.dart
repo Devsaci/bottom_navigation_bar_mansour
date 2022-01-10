@@ -17,6 +17,10 @@ class HomeLayout extends StatelessWidget {
         child: Icon(Icons.add_a_photo),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          print (index);
+        },
+        currentIndex: 0,
         backgroundColor: Colors.amber,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
