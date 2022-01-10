@@ -19,11 +19,18 @@ class _HomeLayoutState extends State<HomeLayout> {
     ArchivedTasksScreen()
   ];
 
+  List<String> titles =
+  [
+    " New Tasks",
+    " Done Tasks",
+    " Archive Tasks",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("79. Bottom Navigation Bar"),
+        title: Text(titles[currentIndex]),
         centerTitle: true,
       ),
       body: screens[currentIndex],
