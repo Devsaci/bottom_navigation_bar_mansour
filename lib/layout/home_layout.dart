@@ -24,6 +24,12 @@ class HomeLayout extends StatelessWidget {
             ),
             label: 'Tasks',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.check_circle_outline,
+            ),
+            label: 'Done',
+          ),
 
         ],
       ),
