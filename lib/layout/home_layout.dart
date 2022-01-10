@@ -12,6 +12,7 @@ class HomeLayout extends StatelessWidget {
         title: Text("79. Bottom Navigation Bar"),
         centerTitle: true,
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {}),
     );
   }
 }
