@@ -10,6 +10,8 @@ class HomeLayout extends StatefulWidget {
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
+
+  int currentIndex =0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         onTap: (index) {
           print (index);
         },
-        currentIndex: 0,
+        currentIndex: currentIndex,
         backgroundColor: Colors.amber,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
