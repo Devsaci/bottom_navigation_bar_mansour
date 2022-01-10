@@ -20,6 +20,7 @@ class HomeLayout extends StatelessWidget {
         backgroundColor: Colors.amber,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
+        selectedFontSize: 25,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
