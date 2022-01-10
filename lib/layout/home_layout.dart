@@ -14,11 +14,11 @@ class HomeLayout extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(
-          Icons.add_a_photo
-        ),
+        child: Icon(Icons.add_a_photo),
       ),
-
+      bottomNavigationBar: BottomNavigationBar(
+        items: [],
+      ),
     );
   }
 }
