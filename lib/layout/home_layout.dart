@@ -30,6 +30,12 @@ class HomeLayout extends StatelessWidget {
             ),
             label: 'Done',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.archive_outlined,
+            ),
+            label: 'Archived',
+          ),
 
         ],
       ),
