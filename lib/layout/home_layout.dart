@@ -25,6 +25,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
+          currentIndex = index;
           print (index);
         },
         currentIndex: currentIndex,
