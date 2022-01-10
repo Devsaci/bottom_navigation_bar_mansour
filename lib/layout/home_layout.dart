@@ -19,6 +19,7 @@ class HomeLayout extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.amber,
         type: BottomNavigationBarType.fixed,
+        showSelectedLabels: true,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
