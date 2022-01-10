@@ -19,8 +19,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     ArchivedTasksScreen()
   ];
 
-  List<String> titles =
-  [
+  List<String> titles = [
     " New Tasks",
     " Done Tasks",
     " Archive Tasks",
