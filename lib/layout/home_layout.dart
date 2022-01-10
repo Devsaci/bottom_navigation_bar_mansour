@@ -17,6 +17,8 @@ class HomeLayout extends StatelessWidget {
         child: Icon(Icons.add_a_photo),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.amber,
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
@@ -36,7 +38,6 @@ class HomeLayout extends StatelessWidget {
             ),
             label: 'Archived',
           ),
-
         ],
       ),
     );
