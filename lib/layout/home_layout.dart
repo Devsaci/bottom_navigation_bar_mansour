@@ -77,6 +77,6 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 }
 
-String getName() {
+Future<String> getName() async {
   return "Saci Zakaria";
 }
