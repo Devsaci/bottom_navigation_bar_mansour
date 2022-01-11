@@ -73,3 +73,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 }
+
+String getName() {
+  return "Saci Zakaria";
+}
