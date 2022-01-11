@@ -76,7 +76,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 }
-
-Future<String> getName() async {
+// Instance of 'Future<String>'
+Future<String> getName()  async {
   return "Saci Zakaria";
 }
