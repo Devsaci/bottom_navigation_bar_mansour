@@ -34,7 +34,10 @@ class _HomeLayoutState extends State<HomeLayout> {
       ),
       body: screens[currentIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          var name = getName();
+          print(name);
+        },
         child: Icon(Icons.add_a_photo),
       ),
       bottomNavigationBar: BottomNavigationBar(
