@@ -45,6 +45,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           getName().then((value) {
             print(value);
             print("Operation");
+            throw('debug !!! ${value.toString()}');
           });
         },
         child: Icon(Icons.add_a_photo),
