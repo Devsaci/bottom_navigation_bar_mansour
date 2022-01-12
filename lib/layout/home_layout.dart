@@ -46,6 +46,8 @@ class _HomeLayoutState extends State<HomeLayout> {
             print(value);
             print("Operation");
             throw('debug !!! ${value.toString()}');
+          }).catchError((error){
+            print("error ${error.toString()}");
           });
         },
         child: Icon(Icons.add_a_photo),
