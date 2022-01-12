@@ -96,5 +96,7 @@ Future<String> getName() async {
   return "Saci Zakaria";
 }
 void creatDatabase(){
-  openDatabase();
+  openDatabase(
+    "todo.db"
+  );
 }
