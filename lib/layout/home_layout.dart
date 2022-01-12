@@ -38,6 +38,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           try {
             var name = await getName();
             print(name);
+            throw('some error !!!');
           } catch (error) {
             print("error ${error.toString()}");
           }
