@@ -25,7 +25,11 @@ class _HomeLayoutState extends State<HomeLayout> {
     " Done Tasks",
     " Archive Tasks",
   ];
-
+@override
+  void initState() {
+    creatDatabase();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
