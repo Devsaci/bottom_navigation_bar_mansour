@@ -34,14 +34,18 @@ class _HomeLayoutState extends State<HomeLayout> {
       ),
       body: screens[currentIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          try {
-            var name = await getName();
-            // print(name);
-            throw('debug !!! ${name.toString()}');
-          } catch (error) {
-            print("error ${error.toString()}");
-          }
+        onPressed: () {
+          // try {
+          //   var name = await getName();
+          //   // print(name);
+          //   throw('debug !!! ${name.toString()}');
+          // } catch (error) {
+          //   print("error ${error.toString()}");
+          // }
+          getName().then((value) {
+            print(value);
+            print("Operation");
+          });
         },
         child: Icon(Icons.add_a_photo),
       ),
