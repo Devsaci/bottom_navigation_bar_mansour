@@ -95,8 +95,9 @@ class _HomeLayoutState extends State<HomeLayout> {
 Future<String> getName() async {
   return "Saci Zakaria";
 }
-void creatDatabase(){
-  openDatabase(
+
+Future<void> creatDatabase() async {
+  var database = await openDatabase(
     "todo.db"
   );
 }
