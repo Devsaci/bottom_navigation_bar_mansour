@@ -37,8 +37,8 @@ class _HomeLayoutState extends State<HomeLayout> {
         onPressed: () async {
           try {
             var name = await getName();
-            print(name);
-            throw('some error !!!');
+            // print(name);
+            throw('debug !!! ${name.toString()}');
           } catch (error) {
             print("error ${error.toString()}");
           }
