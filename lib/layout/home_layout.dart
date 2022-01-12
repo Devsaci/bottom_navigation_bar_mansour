@@ -35,8 +35,12 @@ class _HomeLayoutState extends State<HomeLayout> {
       body: screens[currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          var name = await getName();
-          print(name);
+          try {
+            var name = await getName();
+            print(name);
+          } catch (error) {
+            print("error ${error.toString()}");
+          }
         },
         child: Icon(Icons.add_a_photo),
       ),
@@ -76,7 +80,8 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 }
+
 // Instance of 'Future<String>'
-Future<String> getName()  async {
+Future<String> getName() async {
   return "Saci Zakaria";
 }
