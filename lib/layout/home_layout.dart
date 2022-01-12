@@ -99,9 +99,9 @@ Future<void> creatDatabase() async {
   var database = await openDatabase(
     "todo.db",
     version: 1,
-    onCreate: (Database database, int version) {
+    onCreate: (Database database, int version) async {
       print("database created ");
-      database.execute("sql");
+      await database.execute("sql");
     },
     onOpen: (Database database) {
       print("database opened ");
