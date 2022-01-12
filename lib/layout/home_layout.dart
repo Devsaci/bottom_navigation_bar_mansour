@@ -11,8 +11,9 @@ class HomeLayout extends StatefulWidget {
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
 }
-
+// late Database database;
 class _HomeLayoutState extends State<HomeLayout> {
+late Database database;
   int currentIndex = 0;
   List<Widget> screens = [
     NewTasksScreen(),
@@ -25,11 +26,13 @@ class _HomeLayoutState extends State<HomeLayout> {
     " Done Tasks",
     " Archive Tasks",
   ];
-@override
+
+  @override
   void initState() {
     creatDatabase();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,7 +109,8 @@ Future<void> creatDatabase() async {
     onCreate: (Database database, int version) {
       print("database created ");
       database
-          .execute("CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT,status TEXT)")
+          .execute(
+              "CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT,status TEXT)")
           .then((value) => print("table created"))
           .catchError(
             (error) => print("Error when Creating Table"),
@@ -116,4 +120,11 @@ Future<void> creatDatabase() async {
       print("database opened ");
     },
   );
+}
+
+void insertToDatabase(){
+ var database;
+  database.transaction((txn){
+    txn.rawInsert("sql").then((value){}).cat;
+  });
 }
