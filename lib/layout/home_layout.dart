@@ -102,7 +102,7 @@ Future<void> creatDatabase() async {
     onCreate: (Database database, int version) {
       print("database created ");
       database
-          .execute("sql")
+          .execute("CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT,status TEXT)")
           .then((value) => print("table created"))
           .catchError(
             (error) => print("Error when Creating Table"),
