@@ -101,6 +101,7 @@ Future<void> creatDatabase() async {
     version: 1,
     onCreate: (Database database, int version) {
       print("database created ");
+      database.execute("sql");
     },
     onOpen: (Database database) {
       print("database opened ");
