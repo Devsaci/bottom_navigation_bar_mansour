@@ -99,5 +99,8 @@ Future<void> creatDatabase() async {
   var database = await openDatabase(
     "todo.db",
     version: 1,
+    onCreate: (Database database, int version){
+
+    }
   );
 }
