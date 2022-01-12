@@ -45,7 +45,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           getName().then((value) {
             print(value);
             print("Operation");
-            throw('debug !!! ${value.toString()}');
+            throw('debug !!! ');
           }).catchError((error){
             print("error ${error.toString()}");
           });
