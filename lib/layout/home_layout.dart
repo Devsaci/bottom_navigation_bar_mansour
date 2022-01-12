@@ -5,7 +5,6 @@ import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
-
 class HomeLayout extends StatefulWidget {
   const HomeLayout({Key? key}) : super(key: key);
 
@@ -48,7 +47,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             print(value);
             print("Operation");
             // throw('debug !!! ');
-          }).catchError((error){
+          }).catchError((error) {
             print("error ${error.toString()}");
           });
         },
@@ -98,6 +97,7 @@ Future<String> getName() async {
 
 Future<void> creatDatabase() async {
   var database = await openDatabase(
-    "todo.db"
+    "todo.db",
+    version: 1,
   );
 }
