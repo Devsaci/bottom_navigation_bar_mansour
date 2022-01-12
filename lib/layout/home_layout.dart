@@ -97,10 +97,13 @@ Future<String> getName() async {
 
 Future<void> creatDatabase() async {
   var database = await openDatabase(
-    "todo.db",
-    version: 1,
-    onCreate: (Database database, int version){
+      "todo.db",
+      version: 1,
+      onCreate: (Database database, int version) {
 
-    }
+      },
+      onOpen: ( Database database){
+
+      },
   );
 }
