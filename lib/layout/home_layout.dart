@@ -4,6 +4,7 @@ import 'package:bottom_navigation_bar_mansour/models/done_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
 import 'package:flutter/material.dart';
 
+
 class HomeLayout extends StatefulWidget {
   const HomeLayout({Key? key}) : super(key: key);
 
@@ -45,7 +46,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           getName().then((value) {
             print(value);
             print("Operation");
-            throw('debug !!! ');
+            // throw('debug !!! ');
           }).catchError((error){
             print("error ${error.toString()}");
           });
@@ -92,4 +93,7 @@ class _HomeLayoutState extends State<HomeLayout> {
 // Instance of 'Future<String>'
 Future<String> getName() async {
   return "Saci Zakaria";
+}
+void creatDatabase(){
+
 }
