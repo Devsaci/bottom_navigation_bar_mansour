@@ -68,6 +68,8 @@ class _HomeLayoutState extends State<HomeLayout> {
           if (isBottomSheetShown) {
             Navigator.pop(context);
             isBottomSheetShown = false;
+          } else {
+
           }
 
           scaffoldKey.currentState.showBottomSheet(
