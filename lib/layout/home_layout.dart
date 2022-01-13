@@ -81,6 +81,9 @@ class _HomeLayoutState extends State<HomeLayout> {
               ),
             );
             isBottomSheetShown = true;
+            setState(() {
+              fabIcon = Icons.edit;
+            });
           }
         },
         child: Icon(Icons.add_a_photo),
