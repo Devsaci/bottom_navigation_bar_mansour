@@ -52,16 +52,18 @@ class _HomeLayoutState extends State<HomeLayout> {
           //   print("error ${error.toString()}");
           // }
           ///////////////////////////////
-          getName().then((value) {
-            print(value);
-            print("Operation");
-            // throw('debug !!! ');
-          }).catchError((error) {
-            print("error ${error.toString()}");
-          });
+          // getName().then((value) {
+          //   print(value);
+          //   print("Operation");
+          //   // throw('debug !!! ');
+          // }).catchError((error) {
+          //   print("error ${error.toString()}");
+          // });
           ////////////////////////////////
 
-          insertToDatabase();
+          // insertToDatabase();
+          ////////////////////////////////
+          scaffoldKey.currentState.showBottomSheet((context) => null);
         },
         child: Icon(Icons.add_a_photo),
       ),
