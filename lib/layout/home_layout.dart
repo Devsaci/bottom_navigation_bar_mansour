@@ -27,6 +27,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   ];
   var scaffoldKey = GlobalKey<ScaffoldState>();
   bool isBottomSheetShown = false;
+  IconData fabIcon = Icons.edit;
 
   @override
   void initState() {
