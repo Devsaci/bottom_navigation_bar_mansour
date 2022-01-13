@@ -126,7 +126,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 
   void insertToDatabase() {
-
+    database.transaction((txn) => null)
   }
 
 }
