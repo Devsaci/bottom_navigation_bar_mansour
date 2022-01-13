@@ -82,11 +82,11 @@ class _HomeLayoutState extends State<HomeLayout> {
             );
             isBottomSheetShown = true;
             setState(() {
-              fabIcon = Icons.edit;
+              fabIcon = Icons.add;
             });
           }
         },
-        child: Icon(Icons.add_a_photo),
+        child: Icon(fabIcon),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
