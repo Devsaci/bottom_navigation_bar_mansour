@@ -69,16 +69,14 @@ class _HomeLayoutState extends State<HomeLayout> {
             Navigator.pop(context);
             isBottomSheetShown = false;
           } else {
-
+            scaffoldKey.currentState.showBottomSheet(
+              (context) => Container(
+                width: double.infinity,
+                height: 120.0,
+                color: Colors.redAccent,
+              ),
+            );
           }
-
-          scaffoldKey.currentState.showBottomSheet(
-            (context) => Container(
-              width: double.infinity,
-              height: 120.0,
-              color: Colors.redAccent,
-            ),
-          );
         },
         child: Icon(Icons.add_a_photo),
       ),
