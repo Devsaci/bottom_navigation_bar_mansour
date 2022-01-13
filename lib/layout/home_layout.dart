@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 import 'package:bottom_navigation_bar_mansour/models/archived_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/done_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
 class HomeLayout extends StatefulWidget {
-  const HomeLayout({Key? key}) : super(key: key);
-
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
 }
+
 // late Database database;
 class _HomeLayoutState extends State<HomeLayout> {
-late Database database;
+  Database database;
+
   int currentIndex = 0;
   List<Widget> screens = [
     NewTasksScreen(),
@@ -29,8 +29,8 @@ late Database database;
 
   @override
   void initState() {
-    creatDatabase();
     super.initState();
+    createDatabase();
   }
 
   @override
@@ -50,6 +50,7 @@ late Database database;
           // } catch (error) {
           //   print("error ${error.toString()}");
           // }
+          ///////////////////////////////
           getName().then((value) {
             print(value);
             print("Operation");
@@ -57,6 +58,9 @@ late Database database;
           }).catchError((error) {
             print("error ${error.toString()}");
           });
+          ////////////////////////////////
+
+          insertToDatabase();
         },
         child: Icon(Icons.add_a_photo),
       ),
@@ -95,36 +99,54 @@ late Database database;
       ),
     );
   }
+
+  Future<String> getName() async {
+    return "Saci Zakaria";
+  }
+
+ void createDatabase() async {
+    Database database = await openDatabase(
+      "todo.db",
+      version: 1,
+      onCreate: (database, version) {
+        print("database created ");
+        database
+            .execute(
+            "CREATE TABLE tasks (id INTEGER PRIMARY KEY, title  date TEXT, time TEXT,status TEXT)")
+            .then((value) {
+          print("table created");
+        }).catchError((error) {
+          print("Error when Creating Table");
+        });
+      },
+      onOpen: (database) {
+        print("database opened ");
+      },
+    );
+  }
+
+  void insertToDatabase() {
+
+  }
+
 }
 
 // Instance of 'Future<String>'
-Future<String> getName() async {
-  return "Saci Zakaria";
-}
 
-Future<void> creatDatabase() async {
-  var database = await openDatabase(
-    "todo.db",
-    version: 1,
-    onCreate: (Database database, int version) {
-      print("database created ");
-      database
-          .execute(
-              "CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT,status TEXT)")
-          .then((value) => print("table created"))
-          .catchError(
-            (error) => print("Error when Creating Table"),
-          );
-    },
-    onOpen: (Database database) {
-      print("database opened ");
-    },
-  );
-}
 
-void insertToDatabase(){
- var database;
-  database.transaction((txn){
-    txn.rawInsert("sql").then((value){}).cat;
-  });
-}
+
+///////////////////////
+// void insertToDatabase() {
+//   var database;
+//   database.transaction((txn) {
+//     txn.rawInsert(
+//         'INSERT INTO tasks(title,date,time,status) VALUES ("first_task","13/01/2022","10h14","new") ')
+//         .then((value) {
+//       print('$value Inserted Successfully');
+//       print('***  insertrawid1   ***: $value');
+//     }).catchError((error) {
+//       print('Error When Inserting New Record ${error.toString()}');
+//     });
+//     return null;
+//   });
+// }
