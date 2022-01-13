@@ -26,7 +26,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     " Done Tasks",
     " Archive Tasks",
   ];
-
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
     super.initState();
