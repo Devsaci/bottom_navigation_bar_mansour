@@ -10,7 +10,6 @@ class HomeLayout extends StatefulWidget {
   State<HomeLayout> createState() => _HomeLayoutState();
 }
 
-
 class _HomeLayoutState extends State<HomeLayout> {
   Database database;
 
@@ -28,6 +27,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   ];
   var scaffoldKey = GlobalKey<ScaffoldState>();
   bool isBottomSheetShown = false;
+
   @override
   void initState() {
     super.initState();
@@ -64,12 +64,17 @@ class _HomeLayoutState extends State<HomeLayout> {
 
           // insertToDatabase();
           ////////////////////////////////
+
+          if (isBottomSheetShown) {
+            Navigator.pop(context);
+          }
+
           scaffoldKey.currentState.showBottomSheet(
-                  (context) => Container(
-                    width: double.infinity,
-                    height: 120.0,
-                    color: Colors.redAccent,
-                  ),
+            (context) => Container(
+              width: double.infinity,
+              height: 120.0,
+              color: Colors.redAccent,
+            ),
           );
         },
         child: Icon(Icons.add_a_photo),
@@ -114,20 +119,20 @@ class _HomeLayoutState extends State<HomeLayout> {
     return "Saci Zakaria";
   }
 
- void createDatabase() async {
-     database = await openDatabase(
+  void createDatabase() async {
+    database = await openDatabase(
       "todo.db",
       version: 1,
-       // id integer
-       // title String
-       // date String
-       // time String
-       // status String
+      // id integer
+      // title String
+      // date String
+      // time String
+      // status String
       onCreate: (database, version) {
         print("database created ");
         database
             .execute(
-            'CREATE TABLE tasks ( title TEXT, date TEXT, time TEXT, status TEXT)')
+                'CREATE TABLE tasks ( title TEXT, date TEXT, time TEXT, status TEXT)')
             .then((value) {
           print("table created");
         }).catchError((error) {
@@ -141,21 +146,17 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 
   void insertToDatabase() {
-    database.transaction((txn)
-    {
-      txn.rawInsert(
+    database.transaction((txn) {
+      txn
+          .rawInsert(
         'INSERT INTO tasks( title, date, time, status) VALUES( "title", "date", "time", "new")',
-      ).then((value)
-      {
+      )
+          .then((value) {
         print('$value Inserted Successfully');
-      }).catchError((error)
-      {
+      }).catchError((error) {
         print('Error When Inserting New Record ${error.toString()}');
       });
       return null;
     });
   }
 }
-
-
-
