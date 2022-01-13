@@ -76,6 +76,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                 color: Colors.redAccent,
               ),
             );
+            isBottomSheetShown = true;
           }
         },
         child: Icon(Icons.add_a_photo),
