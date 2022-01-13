@@ -105,7 +105,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 
  void createDatabase() async {
-    Database database = await openDatabase(
+     database = await openDatabase(
       "todo.db",
       version: 1,
       onCreate: (database, version) {
