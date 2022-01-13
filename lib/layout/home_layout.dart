@@ -128,7 +128,9 @@ class _HomeLayoutState extends State<HomeLayout> {
   void insertToDatabase() {
     database.transaction((txn)
     {
-      txn.rawInsert("sql").then((value) => null);
+      txn.rawInsert("sql").then((value)
+      {}
+      );
       return null;
     });
   }
