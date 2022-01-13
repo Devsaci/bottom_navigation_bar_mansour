@@ -131,7 +131,9 @@ class _HomeLayoutState extends State<HomeLayout> {
       txn.rawInsert('INSERT INTO tasks(title,date,time,status) VALUES ("first_task","13/01/2022","10h14","new")')
           .then((value) {
         print('$value Inserted Successfully');
-      }).catchError((error){});
+      }).catchError((error){
+        print('Error When Inserting New Record ${error.toString()}');
+      });
       return null;
     });
   }
