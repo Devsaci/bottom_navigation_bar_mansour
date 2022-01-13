@@ -27,6 +27,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     " Archive Tasks",
   ];
   var scaffoldKey = GlobalKey<ScaffoldState>();
+  bool isBottomSheetShown = false;
   @override
   void initState() {
     super.initState();
