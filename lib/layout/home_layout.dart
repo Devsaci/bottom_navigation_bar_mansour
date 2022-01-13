@@ -129,7 +129,9 @@ class _HomeLayoutState extends State<HomeLayout> {
     database.transaction((txn)
     {
       txn.rawInsert('INSERT INTO tasks(title,date,time,status) VALUES ("first_task","13/01/2022","10h14","new")')
-          .then((value) {}).catchError((error){});
+          .then((value) {
+        print('$value Inserted Successfully');
+      }).catchError((error){});
       return null;
     });
   }
