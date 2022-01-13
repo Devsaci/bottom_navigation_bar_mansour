@@ -108,11 +108,16 @@ class _HomeLayoutState extends State<HomeLayout> {
      database = await openDatabase(
       "todo.db",
       version: 1,
+       // id integer
+       // title String
+       // date String
+       // time String
+       // status String
       onCreate: (database, version) {
         print("database created ");
         database
             .execute(
-            "CREATE TABLE tasks (id INTEGER PRIMARY KEY, title  date TEXT, time TEXT,status TEXT)")
+            'CREATE TABLE tasks ( title TEXT, date TEXT, time TEXT, status TEXT)')
             .then((value) {
           print("table created");
         }).catchError((error) {
@@ -129,7 +134,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     database.transaction((txn)
     {
       txn.rawInsert(
-          'INSERT INTO tasks(title,date,time,status) VALUES ("first_task","13/01/2022","10h14","new")'
+        'INSERT INTO tasks( title, date, time, status) VALUES( "title", "date", "time", "new")',
       ).then((value)
       {
         print('$value Inserted Successfully');
