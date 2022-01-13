@@ -69,6 +69,9 @@ class _HomeLayoutState extends State<HomeLayout> {
           if (isBottomSheetShown) {
             Navigator.pop(context);
             isBottomSheetShown = false;
+            setState(() {
+              fabIcon = Icons.edit;
+            });
           } else {
             scaffoldKey.currentState.showBottomSheet(
               (context) => Container(
