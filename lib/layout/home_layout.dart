@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+
 import 'package:bottom_navigation_bar_mansour/models/archived_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/done_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
+import 'package:bottom_navigation_bar_mansour/shared/components.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -11,7 +13,7 @@ class HomeLayout extends StatefulWidget {
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
-  Database database;
+  late Database database;
 
   int currentIndex = 0;
   List<Widget> screens = [
@@ -28,6 +30,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   bool isBottomSheetShown = false;
   IconData fabIcon = Icons.edit;
+  var titleController = TextEditingController();
 
   @override
   void initState() {
@@ -44,6 +47,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         centerTitle: true,
       ),
       body: screens[currentIndex],
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // try {
@@ -73,14 +77,25 @@ class _HomeLayoutState extends State<HomeLayout> {
               fabIcon = Icons.edit;
             });
           } else {
-            scaffoldKey.currentState.showBottomSheet(
+            scaffoldKey.currentState?.showBottomSheet(
               (context) => Column(
-                children: 
-                [
-
+                children: [
+                  defaultFormField(
+                      controller: titleController,
+                      type: TextInputType.text,
+                      validate: (value){
+                        if (value!.isEmpty) {
+                          return 'email must not be empty';
+                        }
+                        return null;
+                      },
+                      label:  'Task Title',
+                      prefix:  Icons.title,
+                  ),
                 ],
               ),
             );
+
             isBottomSheetShown = true;
             setState(() {
               fabIcon = Icons.add;
