@@ -4,6 +4,7 @@ import 'package:bottom_navigation_bar_mansour/models/archived_tasks_screen.dart'
 import 'package:bottom_navigation_bar_mansour/models/done_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/shared/components.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -78,6 +79,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           } else {
             scaffoldKey.currentState?.showBottomSheet(
               (context) => Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   defaultFormField(
                     controller: titleController,
