@@ -78,22 +78,28 @@ class _HomeLayoutState extends State<HomeLayout> {
             });
           } else {
             scaffoldKey.currentState?.showBottomSheet(
-              (context) => Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  defaultFormField(
-                    controller: titleController,
-                    type: TextInputType.text,
-                    validate: (value) {
-                      if (value!.isEmpty) {
-                        return 'email must not be empty';
-                      }
-                      return null;
-                    },
-                    label: 'Task Title',
-                    prefix: Icons.title,
+              (context) => Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  color: Colors.grey[500],
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      defaultFormField(
+                        controller: titleController,
+                        type: TextInputType.text,
+                        validate: (value) {
+                          if (value!.isEmpty) {
+                            return 'email must not be empty';
+                          }
+                          return null;
+                        },
+                        label: 'Task Title',
+                        prefix: Icons.title,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             );
 
