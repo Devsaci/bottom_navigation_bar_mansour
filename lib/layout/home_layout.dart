@@ -47,7 +47,6 @@ class _HomeLayoutState extends State<HomeLayout> {
         centerTitle: true,
       ),
       body: screens[currentIndex],
-
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // try {
@@ -81,16 +80,16 @@ class _HomeLayoutState extends State<HomeLayout> {
               (context) => Column(
                 children: [
                   defaultFormField(
-                      controller: titleController,
-                      type: TextInputType.text,
-                      validate: (value){
-                        if (value!.isEmpty) {
-                          return 'email must not be empty';
-                        }
-                        return null;
-                      },
-                      label:  'Task Title',
-                      prefix:  Icons.title,
+                    controller: titleController,
+                    type: TextInputType.text,
+                    validate: (value) {
+                      if (value!.isEmpty) {
+                        return 'email must not be empty';
+                      }
+                      return null;
+                    },
+                    label: 'Task Title',
+                    prefix: Icons.title,
                   ),
                 ],
               ),
