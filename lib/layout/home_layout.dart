@@ -99,7 +99,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                       ),
                       defaultFormField(
                         controller: timeController,
-                        type: TextInputType.text,
+                        type: TextInputType.datetime,
                         onTape: (){
                           print ('Timing Taped');
                         },
