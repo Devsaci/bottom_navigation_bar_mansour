@@ -113,7 +113,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                   context: context,
                                   initialTime: TimeOfDay.now())
                               .then((value) {
-                            print(value.toString());
+                            print(value?.format(context));
                           });
                         },
                         validate: (value) {
