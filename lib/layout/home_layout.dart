@@ -110,11 +110,11 @@ class _HomeLayoutState extends State<HomeLayout> {
                         onTape: () {
                           print('Timing Taped');
                           showTimePicker(
-                              context: context, initialTime: TimeOfDay.now()).then((value)
-                          {
-
-                          }
-                          );
+                                  context: context,
+                                  initialTime: TimeOfDay.now())
+                              .then((value) {
+                            print(value.toString());
+                          });
                         },
                         validate: (value) {
                           if (value!.isEmpty) {
