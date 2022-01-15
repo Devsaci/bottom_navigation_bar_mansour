@@ -31,6 +31,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   bool isBottomSheetShown = false;
   IconData fabIcon = Icons.edit;
   var titleController = TextEditingController();
+  var timeController = TextEditingController();
 
   @override
   void initState() {
@@ -94,6 +95,21 @@ class _HomeLayoutState extends State<HomeLayout> {
                           return null;
                         },
                         label: 'Task Title',
+                        prefix: Icons.title,
+                      ),
+                      defaultFormField(
+                        controller: timeController,
+                        type: TextInputType.text,
+                        onTape: (){
+                          print ('Timing Taped');
+                        },
+                        validate: (value) {
+                          if (value!.isEmpty) {
+                            return 'email must not be empty';
+                          }
+                          return null;
+                        },
+                        label: 'Task Time',
                         prefix: Icons.title,
                       ),
                     ],
