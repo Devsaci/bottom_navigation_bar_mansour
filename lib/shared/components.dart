@@ -1,7 +1,7 @@
 
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart' show BorderRadius, FormFieldValidator, Icon, IconButton, IconData, InputDecoration, OutlineInputBorder, Radius, TextEditingController, TextFormField, TextInputType, ValueChanged, VoidCallback, Widget;
+import 'package:flutter/material.dart' show BorderRadius, FormFieldValidator, GestureTapCallback, Icon, IconButton, IconData, InputDecoration, OutlineInputBorder, Radius, TextEditingController, TextFormField, TextInputType, ValueChanged, VoidCallback, Widget;
 
 Widget defaultFormField({
   required TextEditingController controller,
@@ -14,6 +14,7 @@ Widget defaultFormField({
   VoidCallback? suffixPressed,
   ValueChanged<String>? onSubmit,
   ValueChanged<String>? onChange,
+  GestureTapCallback? onTape,
 }) =>
     TextFormField(
       controller: controller,
@@ -34,4 +35,5 @@ Widget defaultFormField({
       ),
       onFieldSubmitted: onSubmit,
       onChanged: onChange,
+      onTap: onTape,
     );
