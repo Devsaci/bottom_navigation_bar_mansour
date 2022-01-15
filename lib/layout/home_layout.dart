@@ -105,7 +105,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                         },
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return 'email must not be empty';
+                            return 'Timing must not be empty';
                           }
                           return null;
                         },
