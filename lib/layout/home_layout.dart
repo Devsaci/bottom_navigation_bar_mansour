@@ -4,6 +4,7 @@ import 'package:bottom_navigation_bar_mansour/models/archived_tasks_screen.dart'
 import 'package:bottom_navigation_bar_mansour/models/done_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/shared/components.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -88,6 +89,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                       defaultFormField(
                         controller: titleController,
                         type: TextInputType.text,
+                        onTape: () {
+                          print('email Taped');
+                        },
                         validate: (value) {
                           if (value!.isEmpty) {
                             return 'email must not be empty';
@@ -97,11 +101,17 @@ class _HomeLayoutState extends State<HomeLayout> {
                         label: 'Task Title',
                         prefix: Icons.title,
                       ),
+                      SizedBox(
+                        height: 15,
+                      ),
                       defaultFormField(
                         controller: timeController,
                         type: TextInputType.datetime,
-                        onTape: (){
-                          print ('Timing Taped');
+                        onTape: () {
+                          print('Timing Taped');
+                          showTimePicker(
+                              context: context,
+                              initialTime: TimeOfDay.now());
                         },
                         validate: (value) {
                           if (value!.isEmpty) {
@@ -192,8 +202,8 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-  void insertToDatabase()  {
-    database.transaction((txn)  async {
+  void insertToDatabase() {
+    database.transaction((txn) async {
       txn
           .rawInsert(
         'INSERT INTO tasks( title, date, time, status) VALUES( "title", "date", "time", "new")',
@@ -203,7 +213,6 @@ class _HomeLayoutState extends State<HomeLayout> {
       }).catchError((error) {
         print('Error When Inserting New Record ${error.toString()}');
       });
-
     });
   }
 }
