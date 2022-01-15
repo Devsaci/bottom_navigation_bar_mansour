@@ -1,7 +1,7 @@
 
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show BorderRadius, FormFieldValidator, Icon, IconButton, IconData, InputDecoration, OutlineInputBorder, Radius, TextEditingController, TextFormField, TextInputType, ValueChanged, VoidCallback, Widget;
 
 Widget defaultFormField({
   required TextEditingController controller,
