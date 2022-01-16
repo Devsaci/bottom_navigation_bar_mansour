@@ -71,15 +71,17 @@ class _HomeLayoutState extends State<HomeLayout> {
           // });
           ////////////////////////////////
 
-          insertToDatabase();
+          // insertToDatabase();
           ////////////////////////////////
 
           if (isBottomSheetShown) {
             if (formKey.currentState!.validate()) {
-              Navigator.pop(context!);
-              isBottomSheetShown = false;
-              setState(() {
-                fabIcon = Icons.edit;
+              insertToDatabase().then((value) {
+                Navigator.pop(context!);
+                isBottomSheetShown = false;
+                setState(() {
+                  fabIcon = Icons.edit;
+                });
               });
             }
           } else {
@@ -149,7 +151,8 @@ class _HomeLayoutState extends State<HomeLayout> {
                                     firstDate: DateTime.now(),
                                     lastDate: DateTime.parse('2022-02-01'))
                                 .then((value) {
-                              dateController.text = DateFormat.yMMMd().format(value!);
+                              dateController.text =
+                                  DateFormat.yMMMd().format(value!);
                               print(DateFormat.yMMMd().format(value));
                             });
                           },
@@ -242,8 +245,8 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-  void insertToDatabase() {
-    database.transaction((txn) async {
+  Future insertToDatabase() async {
+    return await database.transaction((txn) async {
       txn
           .rawInsert(
         'INSERT INTO tasks( title, date, time, status) VALUES( "title", "date", "time", "new")',
