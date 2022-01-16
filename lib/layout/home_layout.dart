@@ -29,7 +29,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     " Archive Tasks",
   ];
   var scaffoldKey = GlobalKey<ScaffoldState>();
-  var formKeyKey = GlobalKey<FormState>();
+  late var formKey = GlobalKey<FormState>();
   bool isBottomSheetShown = false;
   IconData fabIcon = Icons.edit;
   var titleController = TextEditingController();
@@ -73,6 +73,9 @@ class _HomeLayoutState extends State<HomeLayout> {
           ////////////////////////////////
 
           if (isBottomSheetShown) {
+            if(formKey.currentState!.validate()){
+
+            }
             Navigator.pop(context!);
             isBottomSheetShown = false;
             setState(() {
@@ -85,7 +88,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                 child: Container(
                   color: Colors.grey[200],
                   child: Form(
-                    key: formKeyKey,
+                    key: formKey,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
