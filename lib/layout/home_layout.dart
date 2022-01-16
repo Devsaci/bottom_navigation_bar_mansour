@@ -114,6 +114,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                             defaultFormField(
                               controller: timeController,
                               type: TextInputType.datetime,
+                              isClickable: false,
                               onTape: () {
                                 print('Timing Taped');
                                 showTimePicker(
