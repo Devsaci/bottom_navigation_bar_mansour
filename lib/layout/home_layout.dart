@@ -29,10 +29,11 @@ class _HomeLayoutState extends State<HomeLayout> {
     " Archive Tasks",
   ];
   var scaffoldKey = GlobalKey<ScaffoldState>();
+  var formKeyKey = GlobalKey<FormState>();
   bool isBottomSheetShown = false;
   IconData fabIcon = Icons.edit;
   var titleController = TextEditingController();
- late var timeController = TextEditingController();
+  var timeController = TextEditingController();
 
   @override
   void initState() {
@@ -111,9 +112,10 @@ class _HomeLayoutState extends State<HomeLayout> {
                           print('Timing Taped');
                           showTimePicker(
                                   context: context,
-                                  initialTime: TimeOfDay.now()).then((value)
-                          {
-                             timeController.text = (value?.format(context)).toString();
+                                  initialTime: TimeOfDay.now())
+                              .then((value) {
+                            timeController.text =
+                                (value?.format(context)).toString();
                             print(value?.format(context));
                           });
                         },
