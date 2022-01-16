@@ -32,7 +32,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   bool isBottomSheetShown = false;
   IconData fabIcon = Icons.edit;
   var titleController = TextEditingController();
-  var timeController = TextEditingController();
+ late var timeController = TextEditingController();
 
   @override
   void initState() {
@@ -41,7 +41,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext? context) {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -72,7 +72,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           ////////////////////////////////
 
           if (isBottomSheetShown) {
-            Navigator.pop(context);
+            Navigator.pop(context!);
             isBottomSheetShown = false;
             setState(() {
               fabIcon = Icons.edit;
@@ -111,8 +111,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                           print('Timing Taped');
                           showTimePicker(
                                   context: context,
-                                  initialTime: TimeOfDay.now())
-                              .then((value) {
+                                  initialTime: TimeOfDay.now()).then((value)
+                          {
+                             timeController.text = (value?.format(context)).toString();
                             print(value?.format(context));
                           });
                         },
