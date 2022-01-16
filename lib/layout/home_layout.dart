@@ -76,7 +76,11 @@ class _HomeLayoutState extends State<HomeLayout> {
 
           if (isBottomSheetShown) {
             if (formKey.currentState!.validate()) {
-              insertToDatabase().then((value) {
+              insertToDatabase(
+                title: titleController.text,
+                date: dateController.text,
+                time: timeController.text,
+              ).then((value) {
                 Navigator.pop(context!);
                 isBottomSheetShown = false;
                 setState(() {
@@ -245,11 +249,15 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-  Future insertToDatabase() async {
+  Future insertToDatabase({
+    required String title,
+    required String time,
+    required String date,
+  }) async {
     return await database.transaction((txn) async {
       txn
           .rawInsert(
-        'INSERT INTO tasks( title, date, time, status) VALUES( "title", "date", "time", "new")',
+        'INSERT INTO tasks( title, date, time, status) VALUES( "$title", "$date", "$time", "new")',
       )
           .then((value) {
         print('$value Inserted Successfully');
