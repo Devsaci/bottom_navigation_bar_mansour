@@ -34,6 +34,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   IconData fabIcon = Icons.edit;
   var titleController = TextEditingController();
   var timeController = TextEditingController();
+  var dateController = TextEditingController();
 
   @override
   void initState() {
@@ -73,14 +74,13 @@ class _HomeLayoutState extends State<HomeLayout> {
           ////////////////////////////////
 
           if (isBottomSheetShown) {
-            if(formKey.currentState!.validate()){
+            if (formKey.currentState!.validate()) {
               Navigator.pop(context!);
               isBottomSheetShown = false;
               setState(() {
                 fabIcon = Icons.edit;
               });
             }
-
           } else {
             scaffoldKey.currentState?.showBottomSheet(
               (context) => Padding(
@@ -133,13 +133,31 @@ class _HomeLayoutState extends State<HomeLayout> {
                           label: 'Task Time',
                           prefix: Icons.watch_later_outlined,
                         ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        defaultFormField(
+                          controller: dateController,
+                          type: TextInputType.datetime,
+                          onTape: () {
+
+                          },
+                          validate: (value) {
+                            if (value!.isEmpty) {
+                              return 'Date must not be empty';
+                            }
+                            return null;
+                          },
+                          label: 'Task Date',
+                          prefix: Icons.calendar_today,
+                        ),
+
                       ],
                     ),
                   ),
                 ),
               ),
             );
-
             isBottomSheetShown = true;
             setState(() {
               fabIcon = Icons.add;
