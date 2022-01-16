@@ -74,13 +74,13 @@ class _HomeLayoutState extends State<HomeLayout> {
 
           if (isBottomSheetShown) {
             if(formKey.currentState!.validate()){
-
+              Navigator.pop(context!);
+              isBottomSheetShown = false;
+              setState(() {
+                fabIcon = Icons.edit;
+              });
             }
-            Navigator.pop(context!);
-            isBottomSheetShown = false;
-            setState(() {
-              fabIcon = Icons.edit;
-            });
+
           } else {
             scaffoldKey.currentState?.showBottomSheet(
               (context) => Padding(
