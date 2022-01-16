@@ -174,6 +174,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                   ),
                 ),
               ),
+              elevation: 30,
             );
             isBottomSheetShown = true;
             setState(() {
