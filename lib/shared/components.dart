@@ -15,11 +15,13 @@ Widget defaultFormField({
   ValueChanged<String>? onSubmit,
   ValueChanged<String>? onChange,
   GestureTapCallback? onTape,
+  bool isClickable = true,
 }) =>
     TextFormField(
       controller: controller,
       keyboardType: type,
       obscureText: isPassword,
+      enabled: isClickable,
       validator: validate,
       decoration: InputDecoration(
         labelText: label,
