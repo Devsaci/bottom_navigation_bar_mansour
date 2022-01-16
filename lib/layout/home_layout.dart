@@ -84,51 +84,54 @@ class _HomeLayoutState extends State<HomeLayout> {
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
                   color: Colors.grey[200],
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      defaultFormField(
-                        controller: titleController,
-                        type: TextInputType.text,
-                        onTape: () {
-                          print('email Taped');
-                        },
-                        validate: (value) {
-                          if (value!.isEmpty) {
-                            return 'email must not be empty';
-                          }
-                          return null;
-                        },
-                        label: 'Task Title',
-                        prefix: Icons.title,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      defaultFormField(
-                        controller: timeController,
-                        type: TextInputType.datetime,
-                        onTape: () {
-                          print('Timing Taped');
-                          showTimePicker(
-                                  context: context,
-                                  initialTime: TimeOfDay.now())
-                              .then((value) {
-                            timeController.text =
-                                (value?.format(context)).toString();
-                            print(value?.format(context));
-                          });
-                        },
-                        validate: (value) {
-                          if (value!.isEmpty) {
-                            return 'Timing must not be empty';
-                          }
-                          return null;
-                        },
-                        label: 'Task Time',
-                        prefix: Icons.watch_later_outlined,
-                      ),
-                    ],
+                  child: Form(
+                    key: formKeyKey,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        defaultFormField(
+                          controller: titleController,
+                          type: TextInputType.text,
+                          onTape: () {
+                            print('email Taped');
+                          },
+                          validate: (value) {
+                            if (value!.isEmpty) {
+                              return 'email must not be empty';
+                            }
+                            return null;
+                          },
+                          label: 'Task Title',
+                          prefix: Icons.title,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        defaultFormField(
+                          controller: timeController,
+                          type: TextInputType.datetime,
+                          onTape: () {
+                            print('Timing Taped');
+                            showTimePicker(
+                                    context: context,
+                                    initialTime: TimeOfDay.now())
+                                .then((value) {
+                              timeController.text =
+                                  (value?.format(context)).toString();
+                              print(value?.format(context));
+                            });
+                          },
+                          validate: (value) {
+                            if (value!.isEmpty) {
+                              return 'Timing must not be empty';
+                            }
+                            return null;
+                          },
+                          label: 'Task Time',
+                          prefix: Icons.watch_later_outlined,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
