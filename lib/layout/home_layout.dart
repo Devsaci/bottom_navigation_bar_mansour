@@ -141,6 +141,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                             defaultFormField(
                               controller: dateController,
                               type: TextInputType.datetime,
+                              isClickable: false,
                               onTape: () {
                                 showDatePicker(
                                     context: context,
