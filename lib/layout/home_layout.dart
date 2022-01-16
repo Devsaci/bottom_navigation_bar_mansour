@@ -114,7 +114,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                             defaultFormField(
                               controller: timeController,
                               type: TextInputType.datetime,
-                              isClickable: false,
+                              // isClickable: false,
                               onTape: () {
                                 print('Timing Taped');
                                 showTimePicker(
@@ -141,7 +141,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                             defaultFormField(
                               controller: dateController,
                               type: TextInputType.datetime,
-                              isClickable: false,
+                              // isClickable: false,
                               onTape: () {
                                 showDatePicker(
                                     context: context,
