@@ -83,80 +83,86 @@ class _HomeLayoutState extends State<HomeLayout> {
             }
           } else {
             scaffoldKey.currentState?.showBottomSheet(
-              (context) => Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  color: Colors.grey[200],
-                  child: Form(
-                    key: formKey,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        defaultFormField(
-                          controller: titleController,
-                          type: TextInputType.text,
-                          onTape: () {
-                            print('email Taped');
-                          },
-                          validate: (value) {
-                            if (value!.isEmpty) {
-                              return 'email must not be empty';
-                            }
-                            return null;
-                          },
-                          label: 'Task Title',
-                          prefix: Icons.title,
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        defaultFormField(
-                          controller: timeController,
-                          type: TextInputType.datetime,
-                          onTape: () {
-                            print('Timing Taped');
-                            showTimePicker(
+                  (context) =>
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Container(
+                      color: Colors.grey[200],
+                      child: Form(
+                        key: formKey,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            defaultFormField(
+                              controller: titleController,
+                              type: TextInputType.text,
+                              onTape: () {
+                                print('email Taped');
+                              },
+                              validate: (value) {
+                                if (value!.isEmpty) {
+                                  return 'email must not be empty';
+                                }
+                                return null;
+                              },
+                              label: 'Task Title',
+                              prefix: Icons.title,
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            defaultFormField(
+                              controller: timeController,
+                              type: TextInputType.datetime,
+                              onTape: () {
+                                print('Timing Taped');
+                                showTimePicker(
                                     context: context,
                                     initialTime: TimeOfDay.now())
-                                .then((value) {
-                              timeController.text =
-                                  (value?.format(context)).toString();
-                              print(value?.format(context));
-                            });
-                          },
-                          validate: (value) {
-                            if (value!.isEmpty) {
-                              return 'Timing must not be empty';
-                            }
-                            return null;
-                          },
-                          label: 'Task Time',
-                          prefix: Icons.watch_later_outlined,
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        defaultFormField(
-                          controller: dateController,
-                          type: TextInputType.datetime,
-                          onTape: () {
+                                    .then((value) {
+                                  timeController.text =
+                                      (value?.format(context)).toString();
+                                  print(value?.format(context));
+                                });
+                              },
+                              validate: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Timing must not be empty';
+                                }
+                                return null;
+                              },
+                              label: 'Task Time',
+                              prefix: Icons.watch_later_outlined,
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            defaultFormField(
+                              controller: dateController,
+                              type: TextInputType.datetime,
+                              onTape: () {
+                                showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate:DateTime.now(),
+                                    lastDate: DateTime.parse('2022-02-01')
+                                );
+                              },
+                              validate: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Date must not be empty';
+                                }
+                                return null;
+                              },
+                              label: 'Task Date',
+                              prefix: Icons.calendar_today,
+                            ),
 
-                          },
-                          validate: (value) {
-                            if (value!.isEmpty) {
-                              return 'Date must not be empty';
-                            }
-                            return null;
-                          },
-                          label: 'Task Date',
-                          prefix: Icons.calendar_today,
+                          ],
                         ),
-
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ),
             );
             isBottomSheetShown = true;
             setState(() {
@@ -219,7 +225,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         print("database created ");
         database
             .execute(
-                'CREATE TABLE tasks ( title TEXT, date TEXT, time TEXT, status TEXT)')
+            'CREATE TABLE tasks ( title TEXT, date TEXT, time TEXT, status TEXT)')
             .then((value) {
           print("table created");
         }).catchError((error) {
