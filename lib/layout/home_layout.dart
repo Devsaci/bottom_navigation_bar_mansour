@@ -146,7 +146,11 @@ class _HomeLayoutState extends State<HomeLayout> {
                                     initialDate: DateTime.now(),
                                     firstDate:DateTime.now(),
                                     lastDate: DateTime.parse('2022-02-01')
-                                ).then((value) => null);
+                                ).then((value)
+                                {
+
+                                }
+                                );
                               },
                               validate: (value) {
                                 if (value!.isEmpty) {
