@@ -35,7 +35,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   IconData fabIcon = Icons.edit;
   var titleController = TextEditingController();
   var timeController = TextEditingController();
-  var dateController = TextEditingController();
+  late var dateController = TextEditingController();
 
   @override
   void initState() {
@@ -149,7 +149,8 @@ class _HomeLayoutState extends State<HomeLayout> {
                                     firstDate: DateTime.now(),
                                     lastDate: DateTime.parse('2022-02-01'))
                                 .then((value) {
-                              print(DateFormat.yMMMd().format(value!));
+                              dateController.text = DateFormat.yMMMd().format(value!);
+                              print(DateFormat.yMMMd().format(value));
                             });
                           },
                           validate: (value) {
