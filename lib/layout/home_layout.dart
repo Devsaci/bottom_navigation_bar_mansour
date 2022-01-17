@@ -277,8 +277,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     });
   }
 
-  void getDataFromDatabase(database) async {
-    List<Map> tasks = await database.rawQuery('SELECT * FROM tasks');
-    print (tasks);
+Future< List<Map>> getDataFromDatabase(database) async {
+    return await database.rawQuery('SELECT * FROM tasks');
   }
 }
