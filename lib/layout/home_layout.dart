@@ -255,10 +255,9 @@ class _HomeLayoutState extends State<HomeLayout> {
         });
       },
       onOpen: (database) {
-        getDataFromDatabase(database).then((value)
-            {
-
-            });
+        getDataFromDatabase(database).then((value) {
+          tasks = value;
+        });
         print("database opened ");
       },
     );
@@ -282,7 +281,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     });
   }
 
-Future< List<Map>> getDataFromDatabase(database) async {
+  Future<List<Map>> getDataFromDatabase(database) async {
     return await database.rawQuery('SELECT * FROM tasks');
   }
 }
