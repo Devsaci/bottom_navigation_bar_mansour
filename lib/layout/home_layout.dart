@@ -253,7 +253,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         });
       },
       onOpen: (database) {
-        getDataFromDatabase();
+        getDataFromDatabase(database);
         print("database opened ");
       },
     );
@@ -277,7 +277,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     });
   }
 
-  void getDataFromDatabase() async {
+  void getDataFromDatabase(database) async {
     List<Map> tasks = await database.rawQuery('SELECT * FROM tasks');
     print (tasks);
   }
