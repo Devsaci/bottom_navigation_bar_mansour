@@ -37,6 +37,8 @@ class _HomeLayoutState extends State<HomeLayout> {
   var timeController = TextEditingController();
   late var dateController = TextEditingController();
 
+  List<Map> tasks = [];
+
   @override
   void initState() {
     super.initState();
@@ -253,7 +255,10 @@ class _HomeLayoutState extends State<HomeLayout> {
         });
       },
       onOpen: (database) {
-        getDataFromDatabase(database).then((value) => null);
+        getDataFromDatabase(database).then((value)
+            {
+
+            });
         print("database opened ");
       },
     );
