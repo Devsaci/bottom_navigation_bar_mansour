@@ -11,6 +11,9 @@ class NewTasksScreen extends StatelessWidget {
           radius: 40.0,
           child: Text('02:00 pm'),
         ),
+        SizedBox(
+
+        ),
       ],
     );
   }
