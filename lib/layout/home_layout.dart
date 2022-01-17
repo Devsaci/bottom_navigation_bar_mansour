@@ -253,7 +253,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         });
       },
       onOpen: (database) {
-        getDataFromDatabase(database);
+        getDataFromDatabase(database).then((value) => null);
         print("database opened ");
       },
     );
