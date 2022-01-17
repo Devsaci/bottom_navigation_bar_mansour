@@ -1,7 +1,7 @@
 
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart' show BorderRadius, FormFieldValidator, GestureTapCallback, Icon, IconButton, IconData, InputDecoration, OutlineInputBorder, Radius, TextEditingController, TextFormField, TextInputType, ValueChanged, VoidCallback, Widget;
+import 'package:flutter/material.dart' show BorderRadius, FormFieldValidator, GestureTapCallback, Icon, IconButton, IconData, InputDecoration, OutlineInputBorder, Padding, Radius, TextEditingController, TextFormField, TextInputType, ValueChanged, VoidCallback, Widget;
 
 Widget defaultFormField({
   required TextEditingController controller,
@@ -39,3 +39,31 @@ Widget defaultFormField({
       onChanged: onChange,
       onTap: onTape,
     );
+
+Widget buildTaskItem() => Padding(
+  padding: const EdgeInsets.all(20.0),
+  child: Row(
+    children: [
+      CircleAvatar(
+        radius: 40.0,
+        child: Text('02:00 pm'),
+      ),
+      SizedBox(
+        width: 20.0,
+      ),
+      Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Task Title',
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            '15 Janvier 2022',
+            style: TextStyle(color: Colors.grey),
+          ),
+        ],
+      ),
+    ],
+  ),
+);
