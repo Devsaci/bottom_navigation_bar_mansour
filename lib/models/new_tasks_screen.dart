@@ -7,7 +7,10 @@ class NewTasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CircleAvatar(),
+        CircleAvatar(
+          radius: 40.0,
+          child: Text('02:00 pm'),
+        ),
       ],
     );
   }

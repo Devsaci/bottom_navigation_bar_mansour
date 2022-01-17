@@ -53,7 +53,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         title: Text(titles[currentIndex]),
         centerTitle: true,
       ),
-      body: screens[currentIndex],
+      body: NewTasksScreen(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // try {
