@@ -257,6 +257,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       onOpen: (database) {
         getDataFromDatabase(database).then((value) {
           tasks = value;
+          print(tasks);
         });
         print("database opened ");
       },
