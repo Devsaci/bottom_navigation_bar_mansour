@@ -272,4 +272,8 @@ class _HomeLayoutState extends State<HomeLayout> {
       });
     });
   }
+
+  void getDataFromDatabase(){
+   database.rawQuery('sql');
+  }
 }
