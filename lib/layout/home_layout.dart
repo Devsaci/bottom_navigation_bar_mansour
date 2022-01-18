@@ -54,7 +54,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         title: Text(titles[currentIndex]),
         centerTitle: true,
       ),
-      body: tasks.isEmpty ? Center(child: CircularProgressIndicator()) :  screens[currentIndex],
+      body: screens[currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // try {
