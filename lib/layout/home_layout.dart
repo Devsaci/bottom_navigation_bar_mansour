@@ -6,7 +6,7 @@ import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/shared/components.dart';
 import 'package:bottom_navigation_bar_mansour/shared/constants.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
@@ -56,7 +56,8 @@ class _HomeLayoutState extends State<HomeLayout> {
       body: ConditionalBuilder(
         condition: tasks.isNotEmpty,
         builder: (BuildContext context) => screens[currentIndex],
-        fallback: (BuildContext context) => Center(child: CircularProgressIndicator()),
+        fallback: (BuildContext context) =>
+            Center(child: CircularProgressIndicator()),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -87,10 +88,20 @@ class _HomeLayoutState extends State<HomeLayout> {
                 date: dateController.text,
                 time: timeController.text,
               ).then((value) {
-                Navigator.pop(context!);
-                isBottomSheetShown = false;
-                setState(() {
-                  fabIcon = Icons.edit;
+                getDataFromDatabase(database).then((value) {
+                  Navigator.pop(context!);
+                  setState(() {
+                    isBottomSheetShown = false;
+                    fabIcon = Icons.edit;
+                    tasks = value;
+                    if (kDebugMode) {
+                      print(tasks[0]);
+                      print(tasks[1]);
+                      print(tasks[2]);
+                      print(tasks[3]);
+                      print(tasks[4]);
+                    }
+                  });
                 });
               });
             }
@@ -261,7 +272,8 @@ class _HomeLayoutState extends State<HomeLayout> {
       onOpen: (database) {
         getDataFromDatabase(database).then((value) {
           setState(() {
-            tasks = value; tasks = value;
+            tasks = value;
+            tasks = value;
           });
           //
           print(tasks[

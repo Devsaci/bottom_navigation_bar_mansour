@@ -37,6 +37,7 @@ dependencies:
   sqflite:
   intl: ^0.17.0
   conditional_builder_null_safety: ^0.0.6
+  bloc: ^8.0.0
 
 dev_dependencies:
   flutter_test:
