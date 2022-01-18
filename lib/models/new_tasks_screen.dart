@@ -6,6 +6,14 @@ import 'package:flutter/material.dart';
 class NewTasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return buildTaskItem() ;
+    return ListView.separated(
+      itemBuilder: (context, index) => buildTaskItem(),
+      separatorBuilder: (context, index) => Container(
+        width: double.infinity,
+        height: 1,
+        color: Colors.indigo,
+      ),
+      itemCount: 10,
+    );
   }
 }
