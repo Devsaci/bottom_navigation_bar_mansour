@@ -8,10 +8,15 @@ class NewTasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) => buildTaskItem(),
-      separatorBuilder: (context, index) => Container(
-        width: double.infinity,
-        height: 1,
-        color: Colors.indigo,
+      separatorBuilder: (context, index) => Padding(
+        padding: const EdgeInsetsDirectional.only(
+          start: 20.0
+        ),
+        child: Container(
+          width: double.infinity,
+          height: 1,
+          color: Colors.indigo,
+        ),
       ),
       itemCount: 10,
     );
