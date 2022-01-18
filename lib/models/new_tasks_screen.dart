@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 class NewTasksScreen extends StatelessWidget {
 
-  late final  List<Map> tasks;
+  final  List<Map> tasks;
 
-  NewTasksScreen({required this.tasks});
+  NewTasksScreen({Key? key, required this.tasks,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class NewTasksScreen extends StatelessWidget {
           color: Colors.indigo,
         ),
       ),
-      itemCount: 10,
+      itemCount: tasks.length,
     );
   }
 }

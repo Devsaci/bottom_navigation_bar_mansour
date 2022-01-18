@@ -19,7 +19,7 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   int currentIndex = 0;
   List<Widget> screens = [
-    NewTasksScreen(),
+    NewTasksScreen(tasks: [],),
     DoneTasksScreen(),
     ArchivedTasksScreen()
   ];
@@ -53,7 +53,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         title: Text(titles[currentIndex]),
         centerTitle: true,
       ),
-      body: NewTasksScreen(),
+      body: NewTasksScreen(tasks: [],),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // try {
