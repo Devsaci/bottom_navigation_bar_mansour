@@ -5,6 +5,7 @@ import 'package:bottom_navigation_bar_mansour/models/done_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/shared/components.dart';
 import 'package:bottom_navigation_bar_mansour/shared/constants.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -38,8 +39,6 @@ class _HomeLayoutState extends State<HomeLayout> {
   var timeController = TextEditingController();
   late var dateController = TextEditingController();
 
-
-
   @override
   void initState() {
     super.initState();
@@ -54,7 +53,11 @@ class _HomeLayoutState extends State<HomeLayout> {
         title: Text(titles[currentIndex]),
         centerTitle: true,
       ),
-      body: screens[currentIndex],
+      body: ConditionalBuilder(
+        condition: tasks.isNotEmpty,
+        builder: (BuildContext context) => screens[currentIndex],
+        fallback: (BuildContext context) => Center(child: CircularProgressIndicator()),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // try {
@@ -259,9 +262,10 @@ class _HomeLayoutState extends State<HomeLayout> {
         getDataFromDatabase(database).then((value) {
           tasks = value;
           //
-          print(tasks[0]); //{id: 1, title: go to swiming, date: Jan 18, 2022, time: 10:19, status: new}
-          print(tasks[1]); //{id: 2, title: go to market, date: Jan 19, 2022, time: 11:20, status: new}
-
+          print(tasks[
+              0]); //{id: 1, title: go to swiming, date: Jan 18, 2022, time: 10:19, status: new}
+          print(tasks[
+              1]); //{id: 2, title: go to market, date: Jan 19, 2022, time: 11:20, status: new}
         });
         print("database opened ");
       },
