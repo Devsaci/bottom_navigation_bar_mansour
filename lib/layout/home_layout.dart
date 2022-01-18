@@ -4,6 +4,7 @@ import 'package:bottom_navigation_bar_mansour/models/archived_tasks_screen.dart'
 import 'package:bottom_navigation_bar_mansour/models/done_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/shared/components.dart';
+import 'package:bottom_navigation_bar_mansour/shared/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -19,7 +20,7 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   int currentIndex = 0;
   List<Widget> screens = [
-    NewTasksScreen(tasks: [],),
+    NewTasksScreen(),
     DoneTasksScreen(),
     ArchivedTasksScreen()
   ];
@@ -37,7 +38,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   var timeController = TextEditingController();
   late var dateController = TextEditingController();
 
-  List<Map> tasks = [];
+
 
   @override
   void initState() {
@@ -53,7 +54,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         title: Text(titles[currentIndex]),
         centerTitle: true,
       ),
-      body: NewTasksScreen(tasks: [],),
+      body: NewTasksScreen(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // try {
