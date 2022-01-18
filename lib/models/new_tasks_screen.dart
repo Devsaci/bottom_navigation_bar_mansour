@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 class NewTasksScreen extends StatelessWidget {
 
   late final  List<Map> tasks;
+
+  NewTasksScreen({required this.tasks});
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
