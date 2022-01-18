@@ -247,7 +247,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         print("database created ");
         database
             .execute(
-                'CREATE TABLE tasks ( title TEXT, date TEXT, time TEXT, status TEXT)')
+                'CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT, status TEXT)')
             .then((value) {
           print("table created");
         }).catchError((error) {
@@ -258,7 +258,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         getDataFromDatabase(database).then((value) {
           tasks = value;
           //
-          print(tasks[0]);
+          print(tasks[0]); //{title: go to swinming, date: Jan 18, 2022, time: 10:11, status: new}
           print(tasks[1]);
         });
         print("database opened ");
