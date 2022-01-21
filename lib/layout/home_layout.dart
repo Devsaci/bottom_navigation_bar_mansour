@@ -3,20 +3,15 @@
 import 'package:bottom_navigation_bar_mansour/models/archived_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/done_tasks_screen.dart';
 import 'package:bottom_navigation_bar_mansour/models/new_tasks_screen.dart';
-import 'package:bottom_navigation_bar_mansour/shared/components.dart';
-import 'package:bottom_navigation_bar_mansour/shared/constants.dart';
+import 'package:bottom_navigation_bar_mansour/shared/components/components.dart';
+import 'package:bottom_navigation_bar_mansour/shared/components/constants.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 
-class HomeLayout extends StatefulWidget {
-  @override
-  State<HomeLayout> createState() => _HomeLayoutState();
-}
-
-class _HomeLayoutState extends State<HomeLayout> {
+class HomeLayout extends StatelessWidget {
   late Database database;
 
   int currentIndex = 0;
@@ -38,12 +33,6 @@ class _HomeLayoutState extends State<HomeLayout> {
   var titleController = TextEditingController();
   var timeController = TextEditingController();
   late var dateController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    createDatabase();
-  }
 
   @override
   Widget build(BuildContext? context) {
@@ -90,18 +79,18 @@ class _HomeLayoutState extends State<HomeLayout> {
               ).then((value) {
                 getDataFromDatabase(database).then((value) {
                   Navigator.pop(context!);
-                  setState(() {
-                    isBottomSheetShown = false;
-                    fabIcon = Icons.edit;
-                    tasks = value;
-                    if (kDebugMode) {
-                      print(tasks[0]);
-                      print(tasks[1]);
-                      print(tasks[2]);
-                      print(tasks[3]);
-                      print(tasks[4]);
-                    }
-                  });
+                  // setState(() {
+                  //   isBottomSheetShown = false;
+                  //   fabIcon = Icons.edit;
+                  //   tasks = value;
+                  //   if (kDebugMode) {
+                  //     print(tasks[0]);
+                  //     print(tasks[1]);
+                  //     print(tasks[2]);
+                  //     print(tasks[3]);
+                  //     print(tasks[4]);
+                  //   }
+                  // },);
                 });
               });
             }
@@ -197,23 +186,23 @@ class _HomeLayoutState extends State<HomeLayout> {
                 .closed
                 .then((value) {
               isBottomSheetShown = false;
-              setState(() {
-                fabIcon = Icons.edit;
-              });
+              // setState(() {
+              //   fabIcon = Icons.edit;
+              // });
             });
             isBottomSheetShown = true;
-            setState(() {
-              fabIcon = Icons.add;
-            });
+            // setState(() {
+            //   fabIcon = Icons.add;
+            // });
           }
         },
         child: Icon(fabIcon),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
+          // setState(() {
+          //   currentIndex = index;
+          // });
           print(index);
         },
         currentIndex: currentIndex,
@@ -271,10 +260,10 @@ class _HomeLayoutState extends State<HomeLayout> {
       },
       onOpen: (database) {
         getDataFromDatabase(database).then((value) {
-          setState(() {
-            tasks = value;
-            tasks = value;
-          });
+          // setState(() {
+          //   tasks = value;
+          //   tasks = value;
+          // });
           //
           print(tasks[
               0]); //{id: 1, title: go to swiming, date: Jan 18, 2022, time: 10:19, status: new}

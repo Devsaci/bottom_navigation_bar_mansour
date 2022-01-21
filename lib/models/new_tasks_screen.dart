@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'package:bottom_navigation_bar_mansour/shared/components.dart';
-import 'package:bottom_navigation_bar_mansour/shared/constants.dart';
+import 'package:bottom_navigation_bar_mansour/shared/components/components.dart';
+import 'package:bottom_navigation_bar_mansour/shared/components/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
