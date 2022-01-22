@@ -25,7 +25,7 @@ class AppCubit extends Cubit<AppStates> {
 
   void changeIndex(int index){
     currentIndex = index;
-    emit(state);
+    emit(AppChangeBottomNavBarState());
   }
 
 
