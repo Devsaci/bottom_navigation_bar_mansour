@@ -38,7 +38,7 @@ class HomeLayout extends StatelessWidget {
                 centerTitle: true,
               ),
               body: ConditionalBuilder(
-                condition: tasks.isNotEmpty,
+                condition: true,
                 builder: (BuildContext context) => screens[currentIndex],
                 fallback: (BuildContext context) =>
                     Center(child: CircularProgressIndicator()),
