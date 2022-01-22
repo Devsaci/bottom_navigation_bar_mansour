@@ -75,7 +75,7 @@ class HomeLayout extends StatelessWidget {
                         time: timeController.text,
                       ).then((value) {
                         getDataFromDatabase(database).then((value) {
-                          Navigator.pop(context!);
+                          Navigator.pop(context);
                           // setState(() {
                           //   isBottomSheetShown = false;
                           //   fabIcon = Icons.edit;
