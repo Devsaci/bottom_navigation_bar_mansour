@@ -205,7 +205,7 @@ class HomeLayout extends StatelessWidget {
                   // });
                   print(index);
                 },
-                currentIndex: currentIndex,
+                currentIndex: AppCubit.get(context).currentIndex,
                 backgroundColor: Colors.amber,
                 type: BottomNavigationBarType.fixed,
                 showSelectedLabels: true,
