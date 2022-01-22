@@ -92,7 +92,8 @@ class HomeLayout extends StatelessWidget {
                   } else {
                     scaffoldKey.currentState
                         ?.showBottomSheet(
-                          (context) => Padding(
+                          (context) =>
+                          Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Container(
                               color: Colors.grey[200],
@@ -126,8 +127,8 @@ class HomeLayout extends StatelessWidget {
                                       onTape: () {
                                         print('Timing Taped');
                                         showTimePicker(
-                                                context: context,
-                                                initialTime: TimeOfDay.now())
+                                            context: context,
+                                            initialTime: TimeOfDay.now())
                                             .then((value) {
                                           timeController.text =
                                               (value?.format(context))
@@ -153,11 +154,11 @@ class HomeLayout extends StatelessWidget {
                                       // isClickable: false,
                                       onTape: () {
                                         showDatePicker(
-                                                context: context,
-                                                initialDate: DateTime.now(),
-                                                firstDate: DateTime.now(),
-                                                lastDate: DateTime.parse(
-                                                    '2022-02-01'))
+                                            context: context,
+                                            initialDate: DateTime.now(),
+                                            firstDate: DateTime.now(),
+                                            lastDate: DateTime.parse(
+                                                '2022-02-01'))
                                             .then((value) {
                                           dateController.text =
                                               DateFormat.yMMMd().format(value!);
@@ -179,8 +180,8 @@ class HomeLayout extends StatelessWidget {
                               ),
                             ),
                           ),
-                          elevation: 30,
-                        )
+                      elevation: 30,
+                    )
                         .closed
                         .then((value) {
                       isBottomSheetShown = false;
@@ -198,7 +199,7 @@ class HomeLayout extends StatelessWidget {
               ),
               bottomNavigationBar: BottomNavigationBar(
                 onTap: (index) {
-
+                  AppCubit.get(context).changeIndex(index);
                   // setState(() {
                   //   currentIndex = index;
                   // });
@@ -252,7 +253,7 @@ class HomeLayout extends StatelessWidget {
         print("database created ");
         database
             .execute(
-                'CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT, status TEXT)')
+            'CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT, status TEXT)')
             .then((value) {
           print("table created");
         }).catchError((error) {
@@ -267,9 +268,9 @@ class HomeLayout extends StatelessWidget {
           // });
           //
           print(tasks[
-              0]); //{id: 1, title: go to swiming, date: Jan 18, 2022, time: 10:19, status: new}
+          0]); //{id: 1, title: go to swiming, date: Jan 18, 2022, time: 10:19, status: new}
           print(tasks[
-              1]); //{id: 2, title: go to market, date: Jan 19, 2022, time: 11:20, status: new}
+          1]); //{id: 2, title: go to market, date: Jan 19, 2022, time: 11:20, status: new}
         });
         print("database opened ");
       },
