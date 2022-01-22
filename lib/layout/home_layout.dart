@@ -43,7 +43,7 @@ class HomeLayout extends StatelessWidget {
       create: (BuildContext context) => AppCubit(),
       child: BlocConsumer<AppCubit,AppStates>(
         listener: (BuildContext context, state) {  },
-        builder: (BuildContext context, Object? state) => Scaffold(
+        builder: (BuildContext context, AppStates state) => Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
             title: Text(titles[currentIndex]),
