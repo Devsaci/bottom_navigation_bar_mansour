@@ -31,10 +31,12 @@ class HomeLayout extends StatelessWidget {
       child: BlocConsumer<AppCubit, AppStates>(
           listener: (BuildContext context, state) {},
           builder: (BuildContext context, AppStates state) {
+            AppCubit cubit = AppCubit.get(context);
+
             return Scaffold(
               key: scaffoldKey,
               appBar: AppBar(
-                title: Text(titles[currentIndex]),
+                title: Text(AppCubit.get(context).titles[currentIndex]),
                 centerTitle: true,
               ),
               body: ConditionalBuilder(
