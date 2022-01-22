@@ -36,7 +36,7 @@ class HomeLayout extends StatelessWidget {
             return Scaffold(
               key: scaffoldKey,
               appBar: AppBar(
-                title: Text(AppCubit.get(context).titles[currentIndex]),
+                title: Text(cubit.titles[cubit.currentIndex]),
                 centerTitle: true,
               ),
               body: ConditionalBuilder(
