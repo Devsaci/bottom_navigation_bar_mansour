@@ -201,7 +201,7 @@ class HomeLayout extends StatelessWidget {
               ),
               bottomNavigationBar: BottomNavigationBar(
                 onTap: (index) {
-                  AppCubit.get(context).changeIndex(index);
+                  cubit.changeIndex(index);
                   // setState(() {
                   //   currentIndex = index;
                   // });
