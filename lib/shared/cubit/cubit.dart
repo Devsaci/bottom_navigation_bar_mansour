@@ -23,4 +23,11 @@ class AppCubit extends Cubit<AppStates> {
     " Archive Tasks",
   ];
 
+  void changeIndex(int index){
+
+  }
+
+
+
+
 }
