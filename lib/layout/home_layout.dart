@@ -41,206 +41,207 @@ class HomeLayout extends StatelessWidget {
   Widget build(BuildContext? context) {
     return BlocProvider(
       create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit,AppStates>(
-        listener: (BuildContext context, state) {  },
-        builder: (BuildContext context, AppStates state) => Scaffold(
-          key: scaffoldKey,
-          appBar: AppBar(
-            title: Text(titles[currentIndex]),
-            centerTitle: true,
-          ),
-          body: ConditionalBuilder(
-            condition: tasks.isNotEmpty,
-            builder: (BuildContext context) => screens[currentIndex],
-            fallback: (BuildContext context) =>
-                Center(child: CircularProgressIndicator()),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              // try {
-              //   var name = await getName();
-              //   // print(name);
-              //   throw('debug !!! ${name.toString()}');
-              // } catch (error) {
-              //   print("error ${error.toString()}");
-              // }
-              ///////////////////////////////
-              // getName().then((value) {
-              //   print(value);
-              //   print("Operation");
-              //   // throw('debug !!! ');
-              // }).catchError((error) {
-              //   print("error ${error.toString()}");
-              // });
-              ////////////////////////////////
+      child: BlocConsumer<AppCubit, AppStates>(
+        listener: (BuildContext context, state) {},
+        builder: (BuildContext context, AppStates state) {
+          return Scaffold(
+            key: scaffoldKey,
+            appBar: AppBar(
+              title: Text(titles[currentIndex]),
+              centerTitle: true,
+            ),
+            body: ConditionalBuilder(
+              condition: tasks.isNotEmpty,
+              builder: (BuildContext context) => screens[currentIndex],
+              fallback: (BuildContext context) =>
+                  Center(child: CircularProgressIndicator()),
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                // try {
+                //   var name = await getName();
+                //   // print(name);
+                //   throw('debug !!! ${name.toString()}');
+                // } catch (error) {
+                //   print("error ${error.toString()}");
+                // }
+                ///////////////////////////////
+                // getName().then((value) {
+                //   print(value);
+                //   print("Operation");
+                //   // throw('debug !!! ');
+                // }).catchError((error) {
+                //   print("error ${error.toString()}");
+                // });
+                ////////////////////////////////
 
-              // insertToDatabase();
-              ////////////////////////////////
+                // insertToDatabase();
+                ////////////////////////////////
 
-              if (isBottomSheetShown) {
-                if (formKey.currentState!.validate()) {
-                  insertToDatabase(
-                    title: titleController.text,
-                    date: dateController.text,
-                    time: timeController.text,
-                  ).then((value) {
-                    getDataFromDatabase(database).then((value) {
-                      Navigator.pop(context!);
-                      // setState(() {
-                      //   isBottomSheetShown = false;
-                      //   fabIcon = Icons.edit;
-                      //   tasks = value;
-                      //   if (kDebugMode) {
-                      //     print(tasks[0]);
-                      //     print(tasks[1]);
-                      //     print(tasks[2]);
-                      //     print(tasks[3]);
-                      //     print(tasks[4]);
-                      //   }
-                      // },);
+                if (isBottomSheetShown) {
+                  if (formKey.currentState!.validate()) {
+                    insertToDatabase(
+                      title: titleController.text,
+                      date: dateController.text,
+                      time: timeController.text,
+                    ).then((value) {
+                      getDataFromDatabase(database).then((value) {
+                        Navigator.pop(context!);
+                        // setState(() {
+                        //   isBottomSheetShown = false;
+                        //   fabIcon = Icons.edit;
+                        //   tasks = value;
+                        //   if (kDebugMode) {
+                        //     print(tasks[0]);
+                        //     print(tasks[1]);
+                        //     print(tasks[2]);
+                        //     print(tasks[3]);
+                        //     print(tasks[4]);
+                        //   }
+                        // },);
+                      });
                     });
-                  });
-                }
-              } else {
-                scaffoldKey.currentState
-                    ?.showBottomSheet(
-                      (context) => Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      color: Colors.grey[200],
-                      child: Form(
-                        key: formKey,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            defaultFormField(
-                              controller: titleController,
-                              type: TextInputType.text,
-                              onTape: () {
-                                print('email Taped');
-                              },
-                              validate: (value) {
-                                if (value!.isEmpty) {
-                                  return 'email must not be empty';
-                                }
-                                return null;
-                              },
-                              label: 'Task Title',
-                              prefix: Icons.title,
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            defaultFormField(
-                              controller: timeController,
-                              type: TextInputType.datetime,
-                              // isClickable: false,
-                              onTape: () {
-                                print('Timing Taped');
-                                showTimePicker(
-                                    context: context,
-                                    initialTime: TimeOfDay.now())
-                                    .then((value) {
-                                  timeController.text =
-                                      (value?.format(context)).toString();
-                                  print(value?.format(context));
-                                });
-                              },
-                              validate: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Timing must not be empty';
-                                }
-                                return null;
-                              },
-                              label: 'Task Time',
-                              prefix: Icons.watch_later_outlined,
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            defaultFormField(
-                              controller: dateController,
-                              type: TextInputType.datetime,
-                              // isClickable: false,
-                              onTape: () {
-                                showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime.now(),
-                                    lastDate:
-                                    DateTime.parse('2022-02-01'))
-                                    .then((value) {
-                                  dateController.text =
-                                      DateFormat.yMMMd().format(value!);
-                                  print(DateFormat.yMMMd().format(value));
-                                });
-                              },
-                              validate: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Date must not be empty';
-                                }
-                                return null;
-                              },
-                              label: 'Task Date',
-                              prefix: Icons.calendar_today,
-                            ),
-                          ],
+                  }
+                } else {
+                  scaffoldKey.currentState
+                      ?.showBottomSheet(
+                        (context) => Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Container(
+                        color: Colors.grey[200],
+                        child: Form(
+                          key: formKey,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              defaultFormField(
+                                controller: titleController,
+                                type: TextInputType.text,
+                                onTape: () {
+                                  print('email Taped');
+                                },
+                                validate: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'email must not be empty';
+                                  }
+                                  return null;
+                                },
+                                label: 'Task Title',
+                                prefix: Icons.title,
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              defaultFormField(
+                                controller: timeController,
+                                type: TextInputType.datetime,
+                                // isClickable: false,
+                                onTape: () {
+                                  print('Timing Taped');
+                                  showTimePicker(
+                                      context: context,
+                                      initialTime: TimeOfDay.now())
+                                      .then((value) {
+                                    timeController.text =
+                                        (value?.format(context)).toString();
+                                    print(value?.format(context));
+                                  });
+                                },
+                                validate: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Timing must not be empty';
+                                  }
+                                  return null;
+                                },
+                                label: 'Task Time',
+                                prefix: Icons.watch_later_outlined,
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              defaultFormField(
+                                controller: dateController,
+                                type: TextInputType.datetime,
+                                // isClickable: false,
+                                onTape: () {
+                                  showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime.now(),
+                                      lastDate:
+                                      DateTime.parse('2022-02-01'))
+                                      .then((value) {
+                                    dateController.text =
+                                        DateFormat.yMMMd().format(value!);
+                                    print(DateFormat.yMMMd().format(value));
+                                  });
+                                },
+                                validate: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Date must not be empty';
+                                  }
+                                  return null;
+                                },
+                                label: 'Task Date',
+                                prefix: Icons.calendar_today,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  elevation: 30,
-                )
-                    .closed
-                    .then((value) {
-                  isBottomSheetShown = false;
+                    elevation: 30,
+                  )
+                      .closed
+                      .then((value) {
+                    isBottomSheetShown = false;
+                    // setState(() {
+                    //   fabIcon = Icons.edit;
+                    // });
+                  });
+                  isBottomSheetShown = true;
                   // setState(() {
-                  //   fabIcon = Icons.edit;
+                  //   fabIcon = Icons.add;
                   // });
-                });
-                isBottomSheetShown = true;
+                }
+              },
+              child: Icon(fabIcon),
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              onTap: (index) {
                 // setState(() {
-                //   fabIcon = Icons.add;
+                //   currentIndex = index;
                 // });
-              }
-            },
-            child: Icon(fabIcon),
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: (index) {
-              // setState(() {
-              //   currentIndex = index;
-              // });
-              print(index);
-            },
-            currentIndex: currentIndex,
-            backgroundColor: Colors.amber,
-            type: BottomNavigationBarType.fixed,
-            showSelectedLabels: true,
-            selectedFontSize: 25,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.menu,
+                print(index);
+              },
+              currentIndex: currentIndex,
+              backgroundColor: Colors.amber,
+              type: BottomNavigationBarType.fixed,
+              showSelectedLabels: true,
+              selectedFontSize: 25,
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.menu,
+                  ),
+                  label: 'Tasks',
                 ),
-                label: 'Tasks',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.check_circle_outline,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.check_circle_outline,
+                  ),
+                  label: 'Done',
                 ),
-                label: 'Done',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.archive_outlined,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.archive_outlined,
+                  ),
+                  label: 'Archived',
                 ),
-                label: 'Archived',
-              ),
-            ],
-          ),
-        ),
-
+              ],
+            ),
+          );
+        }
       ),
     );
   }
