@@ -198,7 +198,7 @@ class HomeLayout extends StatelessWidget {
               ),
               bottomNavigationBar: BottomNavigationBar(
                 onTap: (index) {
-                  currentIndex = index;
+
                   // setState(() {
                   //   currentIndex = index;
                   // });
