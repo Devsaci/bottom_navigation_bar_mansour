@@ -94,4 +94,8 @@ class AppCubit extends Cubit<AppStates> {
   }
   bool isBottomSheetShown = false;
   IconData fabIcon = Icons.edit;
+
+  void changeBottomSheetState(){
+
+  }
 }
