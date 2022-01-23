@@ -56,7 +56,7 @@ class AppCubit extends Cubit<AppStates> {
       onOpen: (database) {
         getDataFromDatabase(database).then((value) {
           tasks = value;
-          emit(state);
+          emit(AppGetDatabaseState());
           print(tasks[0]);
           //{id: 1, title: go to swiming, date: Jan 18, 2022, time: 10:19, status: new}
           print(tasks[1]);
