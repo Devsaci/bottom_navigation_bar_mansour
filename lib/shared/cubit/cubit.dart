@@ -99,8 +99,8 @@ class AppCubit extends Cubit<AppStates> {
     required isShow,
     required IconData icon
   })
-
   {
+    isBottomSheetShown = isShow;
 
   }
 }
