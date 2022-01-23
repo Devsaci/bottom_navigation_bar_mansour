@@ -46,6 +46,11 @@ class HomeLayout extends StatelessWidget {
               ),
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
+                  cubit.insertToDatabase(
+                    title: titleController.text,
+                    time: timeController.text,
+                    date: dateController.text,
+                  );
                   // try {
                   //   var name = await getName();
                   //   // print(name);
