@@ -32,8 +32,8 @@ class AppCubit extends Cubit<AppStates> {
 
 
   late Database database;
-  void createDatabase() async {
-    database = await openDatabase(
+  void createDatabase(){
+   openDatabase(
       "todo.db",
       version: 1,
       // id integer
@@ -66,7 +66,9 @@ class AppCubit extends Cubit<AppStates> {
         });
         print("database opened ");
       },
-    );
+    ).then((value) {
+      database = value;
+   });
   }
 
   Future insertToDatabase({
