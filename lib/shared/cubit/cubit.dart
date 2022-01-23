@@ -102,6 +102,6 @@ class AppCubit extends Cubit<AppStates> {
   {
     isBottomSheetShown = isShow;
     fabIcon = icon;
-    emit(state);
+    emit(AppChangeBottomNavBarState());
   }
 }
