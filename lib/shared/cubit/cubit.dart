@@ -63,9 +63,6 @@ class AppCubit extends Cubit<AppStates> {
           // I/flutter (32512): []
           // I/flutter (32512): onChange => AppCubit, Change { currentState: Instance of 'AppCreateDatabaseState', nextState: Instance of 'AppGetDatabaseState' }
           // print(tasks[0]);
-          // //{id: 1, title: go to swiming, date: Jan 18, 2022, time: 10:19, status: new}
-          // print(tasks[1]);
-          // //{id: 2, title: go to market, date: Jan 19, 2022, time: 11:20, status: new}
         });
         print("database opened ");
       },
