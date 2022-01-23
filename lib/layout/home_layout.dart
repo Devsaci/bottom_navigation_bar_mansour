@@ -66,7 +66,7 @@ class HomeLayout extends StatelessWidget {
                   // insertToDatabase();
                   ////////////////////////////////
 
-                  if (isBottomSheetShown) {
+                  if (cubit.isBottomSheetShown) {
                     if (formKey.currentState!.validate()) {
                       // insertToDatabase(
                       //   title: titleController.text,
