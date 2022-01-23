@@ -195,8 +195,7 @@ class HomeLayout extends StatelessWidget {
                     );
                   }
                 },
-                //Undefined name 'fabIcon'.
-                child: Icon(fabIcon),
+                child: Icon(cubit.fabIcon),
               ),
               bottomNavigationBar: BottomNavigationBar(
                 onTap: (index) {
