@@ -54,16 +54,7 @@ class AppCubit extends Cubit<AppStates> {
         });
       },
       onOpen: (database) {
-        getDataFromDatabase(database).then((value) {
-          tasks = value;
-          print(tasks);
-          emit(AppGetDatabaseState());
-          //**************OutpUt***************
-          // onChange => AppCubit, Change { currentState: Instance of 'AppInitialState', nextState: Instance of 'AppCreateDatabaseState' }
-          // I/flutter (32512): []
-          // I/flutter (32512): onChange => AppCubit, Change { currentState: Instance of 'AppCreateDatabaseState', nextState: Instance of 'AppGetDatabaseState' }
-          // print(tasks[0]);
-        });
+
         print("database opened ");
       },
     ).then((value) {
@@ -83,7 +74,11 @@ class AppCubit extends Cubit<AppStates> {
       ).then((value) {
         print('$value Inserted Successfully');
         emit(AppInsertDatabaseState());
-        getDataFromDatabase(database);
+        getDataFromDatabase(database).then((value) {
+          tasks = value;
+          print(tasks);
+          emit(AppGetDatabaseState());
+        });
         
       }).catchError((error) {
         print('Error When Inserting New Record ${error.toString()}');
