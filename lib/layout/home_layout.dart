@@ -15,7 +15,6 @@ import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 
 class HomeLayout extends StatelessWidget {
-
   var scaffoldKey = GlobalKey<ScaffoldState>();
   late var formKey = GlobalKey<FormState>();
   bool isBottomSheetShown = false;
@@ -41,7 +40,8 @@ class HomeLayout extends StatelessWidget {
               ),
               body: ConditionalBuilder(
                 condition: true,
-                builder: (BuildContext context) => cubit.screens[cubit.currentIndex],
+                builder: (BuildContext context) =>
+                    cubit.screens[cubit.currentIndex],
                 fallback: (BuildContext context) =>
                     Center(child: CircularProgressIndicator()),
               ),
@@ -94,8 +94,7 @@ class HomeLayout extends StatelessWidget {
                   } else {
                     scaffoldKey.currentState
                         ?.showBottomSheet(
-                          (context) =>
-                          Padding(
+                          (context) => Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Container(
                               color: Colors.grey[200],
@@ -129,8 +128,8 @@ class HomeLayout extends StatelessWidget {
                                       onTape: () {
                                         print('Timing Taped');
                                         showTimePicker(
-                                            context: context,
-                                            initialTime: TimeOfDay.now())
+                                                context: context,
+                                                initialTime: TimeOfDay.now())
                                             .then((value) {
                                           timeController.text =
                                               (value?.format(context))
@@ -156,11 +155,11 @@ class HomeLayout extends StatelessWidget {
                                       // isClickable: false,
                                       onTape: () {
                                         showDatePicker(
-                                            context: context,
-                                            initialDate: DateTime.now(),
-                                            firstDate: DateTime.now(),
-                                            lastDate: DateTime.parse(
-                                                '2022-02-01'))
+                                                context: context,
+                                                initialDate: DateTime.now(),
+                                                firstDate: DateTime.now(),
+                                                lastDate: DateTime.parse(
+                                                    '2022-02-01'))
                                             .then((value) {
                                           dateController.text =
                                               DateFormat.yMMMd().format(value!);
@@ -182,8 +181,8 @@ class HomeLayout extends StatelessWidget {
                               ),
                             ),
                           ),
-                      elevation: 30,
-                    )
+                          elevation: 30,
+                        )
                         .closed
                         .then((value) {
                       isBottomSheetShown = false;
@@ -238,9 +237,8 @@ class HomeLayout extends StatelessWidget {
     );
   }
 
-  // Future<String> getName() async {
-  //   return "Saci Zakaria";
-  // }
-
+// Future<String> getName() async {
+//   return "Saci Zakaria";
+// }
 
 }
