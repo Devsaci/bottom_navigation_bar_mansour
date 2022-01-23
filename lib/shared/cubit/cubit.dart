@@ -53,17 +53,17 @@ class AppCubit extends Cubit<AppStates> {
         });
       },
       onOpen: (database) {
-        getDataFromDatabase(database).then((value) {
-          // setState(() {
-          //   tasks = value;
-          //   tasks = value;
-          // });
-          //
-          print(tasks[
-              0]); //{id: 1, title: go to swiming, date: Jan 18, 2022, time: 10:19, status: new}
-          print(tasks[
-              1]); //{id: 2, title: go to market, date: Jan 19, 2022, time: 11:20, status: new}
-        });
+        // getDataFromDatabase(database).then((value) {
+        //   // setState(() {
+        //   //   tasks = value;
+        //   //   tasks = value;
+        //   // });
+        //   //
+        //   print(tasks[
+        //       0]); //{id: 1, title: go to swiming, date: Jan 18, 2022, time: 10:19, status: new}
+        //   print(tasks[
+        //       1]); //{id: 2, title: go to market, date: Jan 19, 2022, time: 11:20, status: new}
+        // });
         print("database opened ");
       },
     ).then((value) {
