@@ -92,4 +92,6 @@ class AppCubit extends Cubit<AppStates> {
   Future<List<Map>> getDataFromDatabase(database) async {
     return await database.rawQuery('SELECT * FROM tasks');
   }
+  bool isBottomSheetShown = false;
+  IconData fabIcon = Icons.edit;
 }
