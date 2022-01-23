@@ -184,11 +184,10 @@ class HomeLayout extends StatelessWidget {
                         )
                         .closed
                         .then((value) {
-                      // Undefined name 'isBottomSheetShown'.
-                      isBottomSheetShown = false;
-                      // setState(() {
-                      //   fabIcon = Icons.edit;
-                      // });
+                      cubit.changeBottomSheetState(
+                        isShow: false,
+                        icon: Icons.edit,
+                      );
                     });
                     // Undefined name 'isBottomSheetShown'.
                     isBottomSheetShown = true;
