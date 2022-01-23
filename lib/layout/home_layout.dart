@@ -189,11 +189,10 @@ class HomeLayout extends StatelessWidget {
                         icon: Icons.edit,
                       );
                     });
-                    // Undefined name 'isBottomSheetShown'.
-                    isBottomSheetShown = true;
-                    // setState(() {
-                    //   fabIcon = Icons.add;
-                    // });
+                    cubit.changeBottomSheetState(
+                      isShow: true,
+                      icon: Icons.add,
+                    );
                   }
                 },
                 //Undefined name 'fabIcon'.
