@@ -68,6 +68,7 @@ class AppCubit extends Cubit<AppStates> {
       },
     ).then((value) {
       database = value;
+      emit(state);
    });
   }
 
