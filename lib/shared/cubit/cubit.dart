@@ -84,7 +84,7 @@ class AppCubit extends Cubit<AppStates> {
       )
           .then((value) {
         print('$value Inserted Successfully');
-        emit(state); 
+        emit(AppInsertDatabaseState());
       }).catchError((error) {
         print('Error When Inserting New Record ${error.toString()}');
       });
