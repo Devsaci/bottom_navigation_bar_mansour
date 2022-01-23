@@ -184,17 +184,20 @@ class HomeLayout extends StatelessWidget {
                         )
                         .closed
                         .then((value) {
+                      // Undefined name 'isBottomSheetShown'.
                       isBottomSheetShown = false;
                       // setState(() {
                       //   fabIcon = Icons.edit;
                       // });
                     });
+                    // Undefined name 'isBottomSheetShown'.
                     isBottomSheetShown = true;
                     // setState(() {
                     //   fabIcon = Icons.add;
                     // });
                   }
                 },
+                //Undefined name 'fabIcon'.
                 child: Icon(fabIcon),
               ),
               bottomNavigationBar: BottomNavigationBar(
