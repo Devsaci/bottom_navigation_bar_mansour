@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'dart:html';
 
 import 'package:bottom_navigation_bar_mansour/shared/components/components.dart';
 import 'package:bottom_navigation_bar_mansour/shared/components/constants.dart';
