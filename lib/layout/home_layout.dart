@@ -46,11 +46,11 @@ class HomeLayout extends StatelessWidget {
               ),
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
-                  cubit.insertToDatabase(
-                    title: titleController.text,
-                    time: timeController.text,
-                    date: dateController.text,
-                  );
+                  // cubit.insertToDatabase(
+                  //   title: titleController.text,
+                  //   time: timeController.text,
+                  //   date: dateController.text,
+                  // );
                   // try {
                   //   var name = await getName();
                   //   // print(name);
@@ -73,6 +73,11 @@ class HomeLayout extends StatelessWidget {
 
                   if (cubit.isBottomSheetShown) {
                     if (formKey.currentState!.validate()) {
+                      cubit.insertToDatabase(
+                        title: titleController.text,
+                        time: timeController.text,
+                        date: dateController.text,
+                      );
                       // insertToDatabase(
                       //   title: titleController.text,
                       //   date: dateController.text,
