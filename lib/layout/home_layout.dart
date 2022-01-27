@@ -27,7 +27,11 @@ class HomeLayout extends StatelessWidget {
       //onChange => AppCubit, Change { currentState: Instance of 'AppInitialState', nextState: Instance of 'AppCreateDatabaseState' }
       create: (BuildContext context) => AppCubit()..createDatabase(),
       child: BlocConsumer<AppCubit, AppStates>(
-          listener: (BuildContext context, state) {},
+          listener: (BuildContext context, state) {
+            if(state is AppInsertDatabaseState){
+              Navigator.pop(context);
+            }
+          },
           builder: (BuildContext context, AppStates state) {
             AppCubit cubit = AppCubit.get(context);
 
