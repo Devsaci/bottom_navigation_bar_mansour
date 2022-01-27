@@ -28,225 +28,221 @@ class HomeLayout extends StatelessWidget {
       create: (BuildContext context) => AppCubit()..createDatabase(),
       child: BlocConsumer<AppCubit, AppStates>(
           listener: (BuildContext context, state) {
-            if(state is AppInsertDatabaseState){
-              Navigator.pop(context);
-            }
-          },
-          builder: (BuildContext context, AppStates state) {
-            AppCubit cubit = AppCubit.get(context);
+        if (state is AppInsertDatabaseState) {
+          Navigator.pop(context);
+        }
+      }, builder: (BuildContext context, AppStates state) {
+        AppCubit cubit = AppCubit.get(context);
+        return Scaffold(
+          key: scaffoldKey,
+          appBar: AppBar(
+            title: Text(cubit.titles[cubit.currentIndex]),
+            centerTitle: true,
+          ),
+          body: ConditionalBuilder(
+            condition:  state is! AppGetDatabaseLoadingState,
+            builder: (BuildContext context) =>
+                cubit.screens[cubit.currentIndex],
+            fallback: (BuildContext context) =>
+                Center(child: CircularProgressIndicator()),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              // cubit.insertToDatabase(
+              //   title: titleController.text,
+              //   time: timeController.text,
+              //   date: dateController.text,
+              // );
+              // try {
+              //   var name = await getName();
+              //   // print(name);
+              //   throw('debug !!! ${name.toString()}');
+              // } catch (error) {
+              //   print("error ${error.toString()}");
+              // }
+              ///////////////////////////////
+              // getName().then((value) {
+              //   print(value);
+              //   print("Operation");
+              //   // throw('debug !!! ');
+              // }).catchError((error) {
+              //   print("error ${error.toString()}");
+              // });
+              ////////////////////////////////
 
-            return Scaffold(
-              key: scaffoldKey,
-              appBar: AppBar(
-                title: Text(cubit.titles[cubit.currentIndex]),
-                centerTitle: true,
-              ),
-              body: ConditionalBuilder(
-                condition: true,
-                builder: (BuildContext context) =>
-                    cubit.screens[cubit.currentIndex],
-                fallback: (BuildContext context) =>
-                    Center(child: CircularProgressIndicator()),
-              ),
-              floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  // cubit.insertToDatabase(
+              // insertToDatabase();
+              ////////////////////////////////
+
+              if (cubit.isBottomSheetShown) {
+                if (formKey.currentState!.validate()) {
+                  cubit.insertToDatabase(
+                    title: titleController.text,
+                    time: timeController.text,
+                    date: dateController.text,
+                  );
+                  // insertToDatabase(
                   //   title: titleController.text,
-                  //   time: timeController.text,
                   //   date: dateController.text,
-                  // );
-                  // try {
-                  //   var name = await getName();
-                  //   // print(name);
-                  //   throw('debug !!! ${name.toString()}');
-                  // } catch (error) {
-                  //   print("error ${error.toString()}");
-                  // }
-                  ///////////////////////////////
-                  // getName().then((value) {
-                  //   print(value);
-                  //   print("Operation");
-                  //   // throw('debug !!! ');
-                  // }).catchError((error) {
-                  //   print("error ${error.toString()}");
+                  //   time: timeController.text,
+                  // ).then((value) {
+                  //   getDataFromDatabase(database).then((value) {
+                  //     Navigator.pop(context);
+                  //     // setState(() {
+                  //     //   isBottomSheetShown = false;
+                  //     //   fabIcon = Icons.edit;
+                  //     //   tasks = value;
+                  //     //   if (kDebugMode) {
+                  //     //     print(tasks[0]);
+                  //     //     print(tasks[1]);
+                  //     //     print(tasks[2]);
+                  //     //     print(tasks[3]);
+                  //     //     print(tasks[4]);
+                  //     //   }
+                  //     // },);
+                  //   });
                   // });
-                  ////////////////////////////////
-
-                  // insertToDatabase();
-                  ////////////////////////////////
-
-                  if (cubit.isBottomSheetShown) {
-                    if (formKey.currentState!.validate()) {
-                      cubit.insertToDatabase(
-                        title: titleController.text,
-                        time: timeController.text,
-                        date: dateController.text,
-                      );
-                      // insertToDatabase(
-                      //   title: titleController.text,
-                      //   date: dateController.text,
-                      //   time: timeController.text,
-                      // ).then((value) {
-                      //   getDataFromDatabase(database).then((value) {
-                      //     Navigator.pop(context);
-                      //     // setState(() {
-                      //     //   isBottomSheetShown = false;
-                      //     //   fabIcon = Icons.edit;
-                      //     //   tasks = value;
-                      //     //   if (kDebugMode) {
-                      //     //     print(tasks[0]);
-                      //     //     print(tasks[1]);
-                      //     //     print(tasks[2]);
-                      //     //     print(tasks[3]);
-                      //     //     print(tasks[4]);
-                      //     //   }
-                      //     // },);
-                      //   });
-                      // });
-                    }
-                  } else {
-                    scaffoldKey.currentState
-                        ?.showBottomSheet(
-                          (context) => Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Container(
-                              color: Colors.grey[200],
-                              child: Form(
-                                key: formKey,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    defaultFormField(
-                                      controller: titleController,
-                                      type: TextInputType.text,
-                                      onTape: () {
-                                        print('email Taped');
-                                      },
-                                      validate: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'email must not be empty';
-                                        }
-                                        return null;
-                                      },
-                                      label: 'Task Title',
-                                      prefix: Icons.title,
-                                    ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    defaultFormField(
-                                      controller: timeController,
-                                      type: TextInputType.datetime,
-                                      // isClickable: false,
-                                      onTape: () {
-                                        print('Timing Taped');
-                                        showTimePicker(
-                                                context: context,
-                                                initialTime: TimeOfDay.now())
-                                            .then((value) {
-                                          timeController.text =
-                                              (value?.format(context))
-                                                  .toString();
-                                          print(value?.format(context));
-                                        });
-                                      },
-                                      validate: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'Timing must not be empty';
-                                        }
-                                        return null;
-                                      },
-                                      label: 'Task Time',
-                                      prefix: Icons.watch_later_outlined,
-                                    ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    defaultFormField(
-                                      controller: dateController,
-                                      type: TextInputType.datetime,
-                                      // isClickable: false,
-                                      onTape: () {
-                                        showDatePicker(
-                                                context: context,
-                                                initialDate: DateTime.now(),
-                                                firstDate: DateTime.now(),
-                                                lastDate: DateTime.parse(
-                                                    '2022-02-01'))
-                                            .then((value) {
-                                          dateController.text =
-                                              DateFormat.yMMMd().format(value!);
-                                          print(
-                                              DateFormat.yMMMd().format(value));
-                                        });
-                                      },
-                                      validate: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'Date must not be empty';
-                                        }
-                                        return null;
-                                      },
-                                      label: 'Task Date',
-                                      prefix: Icons.calendar_today,
-                                    ),
-                                  ],
+                }
+              } else {
+                scaffoldKey.currentState
+                    ?.showBottomSheet(
+                      (context) => Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Container(
+                          color: Colors.grey[200],
+                          child: Form(
+                            key: formKey,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                defaultFormField(
+                                  controller: titleController,
+                                  type: TextInputType.text,
+                                  onTape: () {
+                                    print('email Taped');
+                                  },
+                                  validate: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'email must not be empty';
+                                    }
+                                    return null;
+                                  },
+                                  label: 'Task Title',
+                                  prefix: Icons.title,
                                 ),
-                              ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                defaultFormField(
+                                  controller: timeController,
+                                  type: TextInputType.datetime,
+                                  // isClickable: false,
+                                  onTape: () {
+                                    print('Timing Taped');
+                                    showTimePicker(
+                                            context: context,
+                                            initialTime: TimeOfDay.now())
+                                        .then((value) {
+                                      timeController.text =
+                                          (value?.format(context)).toString();
+                                      print(value?.format(context));
+                                    });
+                                  },
+                                  validate: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Timing must not be empty';
+                                    }
+                                    return null;
+                                  },
+                                  label: 'Task Time',
+                                  prefix: Icons.watch_later_outlined,
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                defaultFormField(
+                                  controller: dateController,
+                                  type: TextInputType.datetime,
+                                  // isClickable: false,
+                                  onTape: () {
+                                    showDatePicker(
+                                            context: context,
+                                            initialDate: DateTime.now(),
+                                            firstDate: DateTime.now(),
+                                            lastDate:
+                                                DateTime.parse('2022-02-01'))
+                                        .then((value) {
+                                      dateController.text =
+                                          DateFormat.yMMMd().format(value!);
+                                      print(DateFormat.yMMMd().format(value));
+                                    });
+                                  },
+                                  validate: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Date must not be empty';
+                                    }
+                                    return null;
+                                  },
+                                  label: 'Task Date',
+                                  prefix: Icons.calendar_today,
+                                ),
+                              ],
                             ),
                           ),
-                          elevation: 30,
-                        )
-                        .closed
-                        .then((value) {
-                      cubit.changeBottomSheetState(
-                        isShow: false,
-                        icon: Icons.edit,
-                      );
-                    });
-                    cubit.changeBottomSheetState(
-                      isShow: true,
-                      icon: Icons.add,
-                    );
-                  }
-                },
-                child: Icon(cubit.fabIcon),
+                        ),
+                      ),
+                      elevation: 30,
+                    )
+                    .closed
+                    .then((value) {
+                  cubit.changeBottomSheetState(
+                    isShow: false,
+                    icon: Icons.edit,
+                  );
+                });
+                cubit.changeBottomSheetState(
+                  isShow: true,
+                  icon: Icons.add,
+                );
+              }
+            },
+            child: Icon(cubit.fabIcon),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: (index) {
+              cubit.changeIndex(index);
+              // setState(() {
+              //   currentIndex = index;
+              // });
+              print(index);
+            },
+            currentIndex: AppCubit.get(context).currentIndex,
+            backgroundColor: Colors.amber,
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: true,
+            selectedFontSize: 25,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.menu,
+                ),
+                label: 'Tasks',
               ),
-              bottomNavigationBar: BottomNavigationBar(
-                onTap: (index) {
-                  cubit.changeIndex(index);
-                  // setState(() {
-                  //   currentIndex = index;
-                  // });
-                  print(index);
-                },
-                currentIndex: AppCubit.get(context).currentIndex,
-                backgroundColor: Colors.amber,
-                type: BottomNavigationBarType.fixed,
-                showSelectedLabels: true,
-                selectedFontSize: 25,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.menu,
-                    ),
-                    label: 'Tasks',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.check_circle_outline,
-                    ),
-                    label: 'Done',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.archive_outlined,
-                    ),
-                    label: 'Archived',
-                  ),
-                ],
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.check_circle_outline,
+                ),
+                label: 'Done',
               ),
-            );
-          }),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.archive_outlined,
+                ),
+                label: 'Archived',
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 
