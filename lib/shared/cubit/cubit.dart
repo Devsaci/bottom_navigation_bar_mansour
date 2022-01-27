@@ -87,7 +87,7 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   Future<List<Map>> getDataFromDatabase(database) async {
-    emit(state);
+    emit(AppGetDatabaseLoadingState());
     return await database.rawQuery('SELECT * FROM tasks');
   }
   bool isBottomSheetShown = false;
